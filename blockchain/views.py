@@ -17,11 +17,14 @@ from crimechain.settings import MEDIA_URL
 
 
 class Blockchain:
-    def __init__(self):
-        self.chain = []
-        self.data = []
-        self.create_block(nonce=1, previous_hash="0")
-        self.nodes = set()
+    def __init__(self, chain1=0):
+        if chain1:
+            self.chain = chain1["chain"]
+        else:
+            self.chain = []
+            self.data = []
+            self.create_block(nonce=1, previous_hash="0")
+            self.nodes = set()
 
     def create_block(self, nonce, previous_hash):
         block = {
@@ -184,9 +187,8 @@ def mine_block(request):
         file = fs.save(
             "main.json", ContentFile(json.dumps({"chain": blockchain.chain, "length": len(blockchain.chain)}))
         )
-        print(file)
         data = json.loads(json.dumps({"chain": blockchain.chain, "length": len(blockchain.chain)}))
-        print(type(data))
+
         return JsonResponse(response)
         # else:
         #     response={}
@@ -195,10 +197,11 @@ def mine_block(request):
 
 # Getting the full Blockchain
 def get_chain(request):
+    file = open("media/main.json", "r")
+    chain1 = json.loads(file.read())
+    blockchain = Blockchain(chain1)
     if request.method == "GET":
         response = {"chain": blockchain.chain, "length": len(blockchain.chain)}
-        l = str(response)
-
     return JsonResponse(response)
 
 
