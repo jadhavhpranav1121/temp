@@ -196,12 +196,15 @@ def mine_block(request):
 
 
 # Getting the full Blockchain
+
+
 def get_chain(request):
     file = open("media/main.json", "r")
     chain1 = json.loads(file.read())
-    blockchain = Blockchain(chain1)
+    blockchain.chain = chain1["chain"]
     if request.method == "GET":
         response = {"chain": blockchain.chain, "length": len(blockchain.chain)}
+    convertToCSV()
     return JsonResponse(response)
 
 
@@ -268,3 +271,18 @@ def replace_chain(request):
         else:
             response = {"message": "All good. The chain is the largest one.", "actual_chain": blockchain.chain}
     return JsonResponse(response)
+
+
+def convertToCSV():
+    chain2 = blockchain.chain
+    l = len(chain2)
+    d = {}
+    list1 = []
+    for i in range(l - 1, 0, -1):
+        temp = chain2[i]["data"][0]["name"]
+        val = d.get(temp, 0)
+        # print(val)
+        # if val <= 1:
+        #     list1.append(chain2[i]["data"][0])
+        #     d[temp] += 1
+    print(list1)
