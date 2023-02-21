@@ -1,7 +1,7 @@
 from django.shortcuts import render
 import datetime
 import hashlib
-import copy
+import copy, os
 import json
 from uuid import uuid4
 import socket
@@ -12,6 +12,8 @@ from django.core.files import File
 import requests
 from django.core.files.storage import FileSystemStorage
 from django.core.files.base import ContentFile
+
+from crimechain.settings import MEDIA_URL
 
 
 class Blockchain:
@@ -167,11 +169,24 @@ def mine_block(request):
             "previous_hash": block["previous_hash"],
             "data": block["data"],
         }
+        try:
+            # os.remove(os.path.join(MEDIA_URL, "main.json"))
+            os.remove("media/main.json")
+            print(os.path.join(MEDIA_URL, "main.json"))
+
+        except:
+            print("pass")
+            print(os.path.join(MEDIA_URL, "main.json"))
+            pass
         # path = default_storage.save("./fs.txt", ContentFile(b"Hello"))
         # default_storage.open(path).read()
         fs = FileSystemStorage()
-        file = fs.save("main.json", ContentFile(str(blockchain.chain)))
+        file = fs.save(
+            "main.json", ContentFile(json.dumps({"chain": blockchain.chain, "length": len(blockchain.chain)}))
+        )
         print(file)
+        data = json.loads(json.dumps({"chain": blockchain.chain, "length": len(blockchain.chain)}))
+        print(type(data))
         return JsonResponse(response)
         # else:
         #     response={}
@@ -182,6 +197,8 @@ def mine_block(request):
 def get_chain(request):
     if request.method == "GET":
         response = {"chain": blockchain.chain, "length": len(blockchain.chain)}
+        l = str(response)
+
     return JsonResponse(response)
 
 
