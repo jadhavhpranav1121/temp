@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load sass_tags %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrimeChain NFT Collections HTML Template</title>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../static/swiper/swiper-bundle.min.css">
+    <link href="{% sass_src 'scss/app.scss' %}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../static/font/font-awesome.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Favicon and Touch Icons  -->
+    <link rel="shortcut icon" href="./../../static/images/logo/preload2.png">
+    <link rel="apple-touch-icon-precomposed" href="./../../static/images/logo/preload2.png">
+</head>
+<body class="header-fixed inner-page pg-faq">
+        <!-- preloade -->
+        <div class="preload preload-container">
+            <div class="preload-logo"></div>
+        </div>
+        <!-- /preload -->
+    <div id="wrapper">
+        <!-- Header -->
+    <header id="header_main" class="header">
+        <div class="container">
+            <div id="site-header-inner">
+                <div class="header__logo">
+                    <a href="/home"><img src="assets/images/logo/logo.png" alt=""></a>
+                </div>
+                <nav id="main-nav" class="main-nav">
+                    <ul id="menu-primary-menu" class="menu">
+                        <li class="menu-item current-menu-item">
+                            <a href="/home/">Home</a>
+                        </li>
+                        <li class="menu-item  current-menu-item">
+                            <a href="#">About</a>
+
+                        </li>
+
+
+                        <li class="menu-item"><a href="/blog">Blog</a></li>
+                        <li class="menu-item">
+                            <a href="contact/">Contact</a>
+                        </li>
+                    </ul>
+                </nav><!-- /#main-nav -->
+
+                <div class="mobile-button"><span></span></div><!-- /.mobile-button -->
+            </div>
+        </div>
+    </header>
+    <!-- end Header -->
+
+    <section class="page-title">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                        <div class="breadcrumbs" data-aos="zoom-in" data-aos-duration="800">
+                            <h3>Asked Questions</h3>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tf-section faq style3 bg-st2 flat-accordion">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-12" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+                    <div class="flat-toggle box-text corner-box active">
+                        <div class="h7 toggle-title active">What are the NFTs?</div>
+                        <p class="toggle-content">Urna vitae erat et lacus, consectetur ac nulla vestibulum lobortis.
+                            Nulla dapibus urna volutpat venenatis, risus faucibus.</p>
+                    </div>
+                    <div class="flat-toggle box-text corner-box">
+                        <div class="h7 toggle-title">How can we buy your NFTs?</div>
+                        <p class="toggle-content">Gravida viverra dui aliquet eu tortor lorem et gravida. Sed amet phasellus tellus mauris auctor rhoncus.
+                            Malesuada nisl at mauris cursus lorem mattis arcu.</p>
+                    </div>
+                    <div class="flat-toggle box-text corner-box">
+                        <div class="h7 toggle-title">Who are the team behind the project?</div>
+                        <p class="toggle-content">Gravida viverra dui aliquet eu tortor lorem et gravida. Sed amet phasellus tellus mauris auctor rhoncus.
+                            Malesuada nisl at mauris cursus lorem mattis arcu.</p>
+                    </div>
+                    <div class="flat-toggle box-text corner-box">
+                        <div class="h7 toggle-title">How much will it cost to mint?</div>
+                        <p class="toggle-content">Gravida viverra dui aliquet eu tortor lorem et gravida. Sed amet phasellus tellus mauris auctor rhoncus.
+                            Malesuada nisl at mauris cursus lorem mattis arcu.</p>
+                    </div>
+                    <div class="flat-toggle box-text corner-box">
+                        <div class="h7 toggle-title">What's the story behind the art?</div>
+                        <p class="toggle-content">Gravida viverra dui aliquet eu tortor lorem et gravida. Sed amet phasellus tellus mauris auctor rhoncus.
+                            Malesuada nisl at mauris cursus lorem mattis arcu.</p>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-12" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+                    <div class="content-about p-l70 m-b50 mobie-40">
+                        <div class="tf-title st2 m-b17">
+                            <h4 class="title">Have a question </h4>
+                        </div>
+                        <p class="m-r-40">Fill up the Form  and ou team will get back to within 24 hrs</p>
+                    </div>
+                    <form action="contact/contact-process.php" class="form-contact p-l70" id="contactform">
+                        <fieldset>
+                            <input type="text" name="name" id="name" placeholder="Name">
+                        </fieldset>
+                        <fieldset>
+                            <input type="email" name="mail" id="mail" placeholder="Email Address">
+                        </fieldset>
+                        <fieldset>
+                            <input type="number" name="phone" id="phone" placeholder="Phone">
+                        </fieldset>
+                        <fieldset>
+                            <textarea placeholder="Type your Messege" rows="5" tabindex="4" name="message" class="message" id="message"></textarea>
+                        </fieldset>
+                        <button class="tf-button btn-effect" type="submit"><span class="boder-fade"></span><span class="effect">Send Message</span></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer">
+
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="wrap-fx">
+                    <div class="Copyright">
+                        <p>CrimeChain 2022- ALL rights reserved</p>
+                    </div>
+                    <ul class="list">
+                        <li>
+                            <a href="#">Privacy Policy</a>
+                        </li>
+                        <li>
+                            <a href="#">Cookies</a>
+                        </li>
+                        <li>
+                            <a href="#">Terms & Conditions</a>
+                        </li>
+                        <li>
+                            <a href="contact/">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    </div>
+    <a id="scroll-top"></a>
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/app.js"></script>
+    <script src="../static/js/jquery.easing.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="../static/js/jquery-validate.js"></script>
+</body>
+</html>

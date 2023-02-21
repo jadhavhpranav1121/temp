@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load sass_tags %}
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrimeChain</title>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../static/swiper/swiper-bundle.min.css">
+    <link href="{% sass_src 'scss/app.scss' %}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../static/font/font-awesome.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Favicon and Touch Icons  -->
+    <link rel="shortcut icon" href="./../../static/images/logo/preload2.png">
+    <link rel="apple-touch-icon-precomposed" href="./../../static/images/logo/preload2.png">
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Raleway:200');
+      body{
+        font-family: 'Raleway';
+      }
+        .gradient-border {
+        --borderWidth: 3px;
+        background: #1D1F20;
+        position: relative;
+        border-radius: 3px;
+      }
+      .gradient-border:after {
+        content: '';
+        position: absolute;
+        top: calc(-1 * 3px);
+        left: calc(-1 * 3px ) !important;
+        height: calc(100% + 3px * 2);
+        width: calc(100% + 3px * 2);
+        background: linear-gradient(60deg,  #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+        border-radius: calc(2 * 3px );
+        z-index: -1 !important;
+        animation: animatedgradient 3s ease alternate infinite;
+        background-size: 300% 300%;
+      }
+
+
+      @keyframes animatedgradient {
+          0% {
+              background-position: 0% 50%;
+          }
+          50% {
+              background-position: 100% 50%;
+          }
+          100% {
+              background-position: 0% 50%;
+          }
+      }
+    </style>
+</head>
+<body class="header-fixed main home3">
+        <!-- preloade -->
+        <div class="preload preload-container">
+            <div class="preload-logo"></div>
+        </div>
+        <!-- /preload -->
+    <div id="wrapper">
+        <!-- Header -->
+      <header id="header_main" class="header">
+          <div class="container">
+              <div id="site-header-inner">
+                  <div class="header__logo">
+                      <a href="/"><img src="../static/images/final2.png" alt=""></a>
+                  </div>
+                  <nav id="main-nav" class="main-nav">
+                      <ul id="menu-primary-menu" class="menu">
+                          <li class="menu-item current-menu-item">
+                              <a href="/">Home</a>
+                          </li>
+                          <li class="menu-item ">
+                              <a href="/our-team">About</a>
+                          </li>
+                          <li class="menu-item">
+                              <a href="/blog">Blog</a>
+                          </li>
+                          <li class="menu-item">
+                              <a href="/contact">Contact</a>
+                          </li>
+                          <li>
+                              <a href="/search" class="gradient-border"  style="display: flex;justify-content:center;align-items: center;padding:11px 10px;" type="submit" >Search</a>
+                          </li>
+                      </ul>
+
+                  </nav><!-- /#main-nav -->
+                  <div style="float:right;">
+                      <!-- <a href="">Login</a> -->
+
+
+                      {% if user.is_authenticated %}
+                      <a href="{% url 'createconvict' %}" class="tf-button btn-effect" ><span class="boder-fade"></span><span class="effect">Create Convict</span></a>
+                      <a href="{% url 'createblock' %}" class="tf-button btn-effect"><span class="boder-fade"></span><span class="effect">Create Block</span></a>
+                      <a href="{% url 'logout' %}" class="tf-button btn-effect" t"><span class="boder-fade"></span><span class="effect">Log Out</span></a>
+                  {% else %}
+                      <a href="{% url 'login' %}" class="tf-button btn-effect" ><span class="boder-fade"></span><span class="effect">Login</span></a>
+                  {% endif %}
+                  </div>
+
+                  <div class="mobile-button"><span></span></div><!-- /.mobile-button -->
+              </div>
+          </div>
+      </header>
+    <!-- end Header -->
+
+    <!-- </div> -->
+
+    {% block content %}
+    {% endblock content %}
+
+</div>
+<footer id="footer">
+
+  <div class="footer-bottom">
+      <div class="container">
+          <div class="wrap-fx">
+              <div class="Copyright">
+                  <p>CrimeChain 2022- ALL rights reserved AISSMS COE 2023</p>
+              </div>
+              <ul class="list">
+                  <li>
+                      <a href="#">Privacy Policy</a>
+                  </li>
+                  <li>
+                      <a href="#">Cookies</a>
+                  </li>
+                  <li>
+                      <a href="#">Terms & Conditions</a>
+                  </li>
+                  <li>
+                      <a href="contact/">Contact Us</a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+
+  </div>
+</footer>
+<a id="scroll-top"></a>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js"></script>
+<script src="/static/js/swiper-bundle.min.js"></script>
+<script src="/static/js/swiper.js"></script>
+<script src="/static/js/app.js"></script>
+<script src="/static/js/jquery.easing.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+ <script src="/static/js/parallax.js"></script>
+ <script src="/static/js/jquery.magnific-popup.min.js"></script>
+ <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.js"></script>
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.0/moment.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/js/tempusdominus-bootstrap-4.min.js" integrity="sha512-k6/Bkb8Fxf/c1Tkyl39yJwcOZ1P4cRrJu77p83zJjN2Z55prbFHxPs9vN7q3l3+tSMGPDdoH51AEU8Vgo1cgAA==" crossorigin="anonymous"></script>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/css/tempusdominus-bootstrap-4.min.css" integrity="sha512-3JRrEUwaCkFUBLK1N8HehwQgu8e23jTH4np5NHOmQOobuC4ROQxFwFgBLTnhcnQRMs84muMh0PnnwXlPq5MGjg==" crossorigin="anonymous" />
+</body>

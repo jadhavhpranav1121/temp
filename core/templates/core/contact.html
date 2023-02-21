@@ -1,0 +1,68 @@
+{% extends "core/index.html" %}
+{% block content %}
+
+    <section class="page-title d-flex justify-content-center align-items-center" style='padding-top:108px;height: 400px;z-index: 100;'>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                        <div class="breadcrumbs" data-aos="zoom-in" data-aos-duration="800">
+                            <h3>Contact Us</h3>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tf-section tf-contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-5 col-lg-5 col-md-12">
+                    <div class="content-about m-b50 mobie-40" data-aos="fade-right" data-aos-duration="800">
+                        <div class="tf-title st2 m-b17">
+                            <h4 class="title">Have a question </h4>
+                        </div>
+                        <p class="m-r-40">Fill up the Form  and ou team will get back to within 24 hrs</p>
+                    </div>
+                    <form action="contact/contact-process.php" class="form-contact" id="contactform" data-aos="fade-right" data-aos-duration="800">
+                        <fieldset>
+                            <input type="text" name="name" id="name" placeholder="Name">
+                        </fieldset>
+                        <fieldset>
+                            <input type="email" name="mail" id="mail" placeholder="Email Address">
+                        </fieldset>
+                        <fieldset>
+                            <input type="number" name="phone" id="phone" placeholder="Phone">
+                        </fieldset>
+                        <fieldset>
+                            <textarea placeholder="Type your Messege" rows="5" tabindex="4" name="message" class="message" id="message"></textarea>
+                        </fieldset>
+                        <button class="tf-button btn-effect" type="submit"><span class="boder-fade"></span><span class="effect">Send Message</span></button>
+                    </form>
+                </div>
+                <div class="col-xl-7 col-lg-7 col-md-12">
+                    <div class="contact-details p-l150" data-aos="fade-left" data-aos-duration="800">
+                        <div class="adress wrap-fx">
+                            <div class="location">
+                                <h6>Location</h6>
+                                <ul>
+                                    <li>No. 1, Kennedy Road, Near RTO Office Sangamvadi, Shivajinagar, Pune, Maharashtra 411001</li>
+                                </ul>
+                            </div>
+                            <div class="mail">
+                                <h6>Contact Us</h6>
+                                <ul>
+                                    <li>+91-20 2605 7660 / 2605 8587</li>
+                                    <li><a href="mailto:principal@aissmscoe.com">principal@aissmscoe.com</a>, <a href="mailto:contact@aissmscoe.com">contact@aissmscoe.com</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="flat-map wow fadeIn animated" data-wow-delay="0.3ms" data-wow-duration="1000ms">
+                            <iframe class="map-content" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.94980970899!2d73.86347081394!3d18.53117008740283!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c0f555bf965d%3A0x4dbf1000c873a42d!2sAISSMS%20College%20of%20Engineering!5e0!3m2!1sen!2sin!4v1676166932477!5m2!1sen!2sin" width="1720" height="655" style="border: 0px; visibility: visible; animation-name: fadeInUp;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock content %}

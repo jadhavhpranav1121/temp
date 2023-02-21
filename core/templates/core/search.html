@@ -1,0 +1,77 @@
+{% extends "core/index.html" %}
+
+{% block content %}
+
+<style>
+  .form-group{
+    display: flex;
+  }
+  form input{
+    margin-right: 20px;
+  }
+</style>
+
+<div class="container-fiuld" style="margin-top: 108px;margin-bottom: 350px;">
+  <div class="row d-flex  align-items-center" style='height:595px;'>
+    <div class=" mx-auto my-3 " style="background:transparent;padding: 40px;max-width:85%;margin:40px auto;border-radius:4px;">
+    <form role="search" action="{% url 'search' %}" method="get" class='form-search'>
+      <div class="form-group">
+        <input class="form-control" name="convict_id" type="search" placeholder="convict id" aria-label="Search">
+        <input class="form-control" name="convict_name" type="search" placeholder="convict name" aria-label="Search">
+        <br>
+        <input class="form-control" name="crime_id" type="search" placeholder="crime id" aria-label="Search">
+      </div>
+
+      <div class="form-group" style="display: flex;justify-content:center;align-items: center;padding:11px 10px;width: 100%;" type="submit">
+                      <input type="submit" class="btn btn-danger col-md-4" name="" style='padding: 18px;width: 200px;' value="Search">
+      </div>
+    </form>
+</div>
+</div>
+
+<h3>search for something</h3>
+
+
+{% if convict %}
+
+<div>
+    <h6>{{ search_hint }}</h6>
+    <h4>
+        <a href="{% url 'convictdetail' convict.id %}">{{ convict.pk }} {{ convict.name }}</a>
+    </h4>
+    <h6>{{ convict.place_of_birth }}</h6>
+    <h6>{{ convict.aliases }}</h6>
+</div>
+{% elif crime %}
+<div>
+    <h6>{{ search_hint }}</h6>
+    <h4>
+        <a href="{% url 'blockdetail' crime.id %}">{{ crime.pk }}</a>
+    </h4>
+    <h6>{{ crime.charges }}</h6>
+    <h6>{{ crime.conviction_date }}</h6>
+    <h6>{{ crime.comments }}</h6>
+</div>
+
+{% elif convict_list %}
+
+{% for convict in convict_list %}
+
+<div>
+    <h6>{{ search_hint }}</h6>
+    <h4>
+        <a href="{% url 'convictdetail' convict.id %}">{{ convict.pk }} {{ convict.name }}</a>
+    </h4>
+    <h6>{{ convict.place_of_birth }}</h6>
+    <h6>{{ convict.aliases }}</h6>
+</div>
+<hr>
+{% endfor %}
+
+{% else %}
+<!-- hit jr search madhe ky zale tr ch and search value nasel tr ch disnar -->
+<div>
+    <h4>No results, redefine search</h4>
+</div>
+{% endif %}
+{% endblock content %}
