@@ -188,7 +188,7 @@ def mine_block(request):
             "main.json", ContentFile(json.dumps({"chain": blockchain.chain, "length": len(blockchain.chain)}))
         )
         data = json.loads(json.dumps({"chain": blockchain.chain, "length": len(blockchain.chain)}))
-
+        convertToCSV()
         return JsonResponse(response)
         # else:
         #     response={}
@@ -204,7 +204,6 @@ def get_chain(request):
     blockchain.chain = chain1["chain"]
     if request.method == "GET":
         response = {"chain": blockchain.chain, "length": len(blockchain.chain)}
-    convertToCSV()
     return JsonResponse(response)
 
 
