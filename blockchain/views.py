@@ -12,7 +12,7 @@ from django.core.files import File
 import requests
 from django.core.files.storage import FileSystemStorage
 from django.core.files.base import ContentFile
-
+import csv
 from crimechain.settings import MEDIA_URL
 
 
@@ -276,13 +276,35 @@ def replace_chain(request):
 def convertToCSV():
     chain2 = blockchain.chain
     l = len(chain2)
-    d = {}
+    freq = {}
     list1 = []
+    try:
+        os.remove("media/main.csv")
+    except:
+        print("pass")
+        pass
+
+    # f = open("main.csv", "x")
     for i in range(l - 1, 0, -1):
         temp = chain2[i]["data"][0]["name"]
-        val = d.get(temp, 0)
-        # print(val)
-        # if val <= 1:
-        #     list1.append(chain2[i]["data"][0])
-        #     d[temp] += 1
-    print(list1)
+        tempInfo = chain2[i]["data"][0]
+        # print(freq[temp])
+        if temp not in freq:
+            list1.append(tempInfo)
+            freq[temp] = 1
+    fields = ["name", "dob", "nationality", "location", "financial_status"]
+    rows = []
+    for i in list1:
+        l = []
+        l.append(i["name"])
+        l.append(i["dob"])
+        l.append(i["nationality"])
+        l.append(i["location"])
+        l.append(i["financial_status"])
+        rows.append(l)
+
+    with open("media/main.csv", "w") as f:
+        f.truncate()
+        csvwriter = csv.writer(f)
+        csvwriter.writerow(fields)
+        csvwriter.writerows(rows)
