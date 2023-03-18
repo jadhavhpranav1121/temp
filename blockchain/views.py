@@ -14,10 +14,11 @@ from django.core.files.storage import FileSystemStorage
 from django.core.files.base import ContentFile
 import csv
 from crimechain.settings import MEDIA_URL
+from datetime import date
 
 
 class Blockchain:
-    def __init__(self, chain1=0):
+    def __init__(self, chain1=[]):
         if chain1:
             self.chain = chain1["chain"]
         else:
@@ -86,7 +87,11 @@ class Blockchain:
             block_index += 1
         return True
 
-    def add_transaction(self, id, name, dob, nationality, location, financial_status, crime_scale):
+    def age_function(born: date):
+        today = date.today()
+        return today.year - born.year - ((today.month, today.day) < (born.month, born.day))
+
+    def add_transaction(self, id, name, dob, nationality, location, Fin_status, crime_scale):
         flag = False
 
         for i in range(int(1), int(len(blockchain.chain))):
@@ -97,18 +102,31 @@ class Blockchain:
                 return (-1, e)
 
         if flag == False:
-            self.data.append(
-                {
-                    "id": id,
-                    "name": name,
-                    "dob": dob,
-                    "nationality": nationality,
-                    "location": location,
-                    "financial_status": financial_status,
-                    "crime_list": [crime_scale],
-                    "time": str(datetime.datetime.now()),
-                }
-            )
+            d1 = datetime.datetime.now()
+            d2 = datetime.datetime.now()
+
+            # self.data.append(
+            #     {
+            #         "criminal_id": id,
+            #         "name": name,
+            #         "dob": dob,
+            #         "nationality": nationality,
+            #         "location": location,
+            #         "age":self.age_function(dob),
+            #         "Fin_status":Fin_status,
+            #         "Population":"Problems",
+            #         "Likelihood":"Problems",
+            #         "Family_record":"Problems",
+            #         "nationality":"indian",
+            #         "location":"indian",
+            #         "crime_list":{
+            #             "details":[
+            #                 "crime_id(1213)":{crime_details}
+            #             ]
+            #          }
+            #         "time": str(datetime.datetime.now())
+            #     }
+            # )
 
         previous_block = self.get_last_block()
         if flag == False:
