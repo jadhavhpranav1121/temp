@@ -5,6 +5,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from core.models import Block, Convict
+from django import forms
 from django.db.models import Q
 from rest_framework.decorators import api_view
 import json
@@ -18,7 +19,16 @@ class Home(ListView):
 
 class CreateConvict(LoginRequiredMixin, CreateView):
     model = Convict
-    fields = ["name", "aliases", "gender", "place_of_birth", "date_of_birth", "education", "financial_background"]
+    fields = ["name", "aliases", "gender", "date_of_birth","place_of_birth","place_of_birth_type", "education", "financial_background","family_record"]
+    
+    def get_form(self, form_class=None):    #for dropdown
+        form = super().get_form(form_class=form_class)
+        form.fields['gender'] = forms.ChoiceField(choices=[('Male','Male'), ('Female','Female'),('Other','Other')])
+        form.fields['place_of_birth_type'] = forms.ChoiceField(choices=[('Urban', 'Urban'), ('Rural', 'Rural')])
+        form.fields['education'] = forms.ChoiceField(choices=[('',''),('Illiterate', 'Illiterate'),('school dropout', 'school dropout'),('school', 'school'), ('graduate', 'graduate'),('post graduate', 'post graduate')])
+        form.fields['financial_background'] = forms.ChoiceField(choices=[('',''),('Below poverty', 'Below poverty'), ('lower class', 'lower class'),('middle', 'middle'),('upper', 'upper')])
+        form.fields['family_record'] = forms.ChoiceField(choices=[('',''),('Yes', 'Yes'), ('No', 'No')])
+        return form
     success_url = reverse_lazy("home")
     template_name = "core/createconvict.html"
 
@@ -29,13 +39,18 @@ class CreateBlock(LoginRequiredMixin, CreateView):
         "perp",
         "charges",
         "charges_code",
+        "crime_type",
         "known_accomplices",
         "fir_date",
         "conviction_date",
         "comments",
         "sentencer",
-        "sentence",
+        "sentence"
     ]
+    def get_form(self, form_class=None):  #for dropdown
+        form = super().get_form(form_class=form_class)
+        form.fields['crime_type'] = forms.ChoiceField(choices=[('Violent', 'Violent'), ('Non-Violent', 'Non-Violent')])
+        return form
     success_url = reverse_lazy("home")
     template_name = "core/createblock.html"
 
@@ -55,9 +70,9 @@ class SearchView(LoginRequiredMixin, ListView):
         context["convict_name"] = convict_name
         context["crime_id"] = crime_id
 
-        print("convict_id", context["convict_id"]) if context["convict_id"] != "" else print()
-        print("convict_name", context["convict_name"]) if context["convict_name"] != "" else print()
-        print("crime_id", context["crime_id"]) if context["crime_id"] != "" else print()
+        #print("convict_id", context["convict_id"]) if context["convict_id"] != "" else print()
+        #print("convict_name", context["convict_name"]) if context["convict_name"] != "" else print()
+        #print("crime_id", context["crime_id"]) if context["crime_id"] != "" else print()
 
         if crime_id != "":
             try:
