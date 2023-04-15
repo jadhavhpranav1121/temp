@@ -20,13 +20,11 @@ Blockchain structures
 }
 
 criminal_id
-Gender
-age
-Fin_status - ( Not fixed )
-Education - high school dropout, secondary, upper secondary, graduate, post graduate
-Population - Urban,rural
-Likelihood - very, neutral ani less ( not  fixed )
-Family_record - ( Not fixed )
-crime
-    1. violent
-    2. Non violent
+Gender        - male, female, other
+age           - 17-80
+Fin_status    - unknown, Below poverty, lower class, middle, uppers( Not fixed )
+Education     - illiterate, school dropout, school, graduate, post graduate
+Population    - unknown, Urban,rural
+Likelihood    - very likely, neutral, less likely( not  fixed )
+Family_record - unknown, Yes, No( Not fixed )
+crime_type    - violent, Non violent
