@@ -17,14 +17,20 @@ Blockchain structures
     "crime_id(1213)":{crime_details}
     "crime_id(123)":{crime_details}
     ]
-}
+} 
 
+FOR CRIMINAL
 criminal_id
+name
 Gender        - male, female, other
-age           - 17-80
-Fin_status    - unknown, Below poverty, lower class, middle, uppers( Not fixed )
+age  / dob         - 17-80
+place of birth
+place of birth type    - unknown, Urban,rural
 Education     - illiterate, school dropout, school, graduate, post graduate
-Population    - unknown, Urban,rural
-Likelihood    - very likely, neutral, less likely( not  fixed )
+Fin_status    - unknown, Below poverty, lower class,middle, uppers( Not fixed )
 Family_record - unknown, Yes, No( Not fixed )
+
+Likelihood    - very likely, neutral, less likely( not  fixed )
+
+FOR CRIME
 crime_type    - violent, Non violent

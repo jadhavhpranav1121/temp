@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-!8o0*!_z@7zettykjde_l2$fi1cf1-8tkra$2yd&6f%+wh^lox"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -34,6 +34,7 @@ ALLOWED_HOSTS = ["*"]
 INSTALLED_APPS = [
     "core",
     "user",
+    "blockchain",
     "crispy_forms",
     "django.contrib.admin",
     "django.contrib.auth",
