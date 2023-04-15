@@ -12,7 +12,6 @@ Blockchain structures
   "Population":sdf,
   "Likelihood":sdf,
   "Family_record":df,
-  "nationality":"indian",
   "location":"indian",
   "crime_list":[
     "crime_id(1213)":{crime_details}
@@ -20,14 +19,14 @@ Blockchain structures
     ]
 }
 
+criminal_id
 Gender
-Adult
 age
-Fin_status
-Education
-Population
-Likelihood
-Family_record
+Fin_status - ( Not fixed )
+Education - high school dropout, secondary, upper secondary, graduate, post graduate
+Population - Urban,rural
+Likelihood - very, neutral ani less ( not  fixed )
+Family_record - ( Not fixed )
 crime
     1. violent
     2. Non violent

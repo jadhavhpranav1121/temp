@@ -53,6 +53,36 @@
               background-position: 0% 50%;
           }
       }
+      /* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #14c2a3 #0c1226;
+    color:#ffffff;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #0c1226;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #14c2a3;
+    border-radius: 40px;
+    border: 0px solid #ff0000;
+  }
+
+  .search-box{
+    justify-content: center;
+    display: flex;
+
+    flex-direction: column;
+    margin-left: 181px;
+  }
     </style>
 </head>
 <body class="header-fixed main home3">
@@ -74,18 +104,20 @@
                           <li class="menu-item current-menu-item">
                               <a href="/">Home</a>
                           </li>
-                          <li class="menu-item ">
+                          <!-- <li class="menu-item ">
                               <a href="/our-team">About</a>
-                          </li>
+                          </li> -->
                           <!-- <li class="menu-item">
                               <a href="/blog">Blog</a>
                           </li> -->
                           <li class="menu-item">
                               <a href="/contact">Contact</a>
                           </li>
+                          {% if user.is_authenticated %}
                           <li>
                               <a href="/search" class="gradient-border"  style="display: flex;justify-content:center;align-items: center;padding:11px 10px;" type="submit" >Search</a>
                           </li>
+                          {% endif %}
                       </ul>
 
                   </nav><!-- /#main-nav -->
@@ -114,6 +146,11 @@
     {% endblock content %}
 
 </div>
+<br>
+<br>
+<br>
+<br>
+<br>
 <footer id="footer">
 
   <div class="footer-bottom">
@@ -152,7 +189,9 @@
  <script src="/static/js/parallax.js"></script>
  <script src="/static/js/jquery.magnific-popup.min.js"></script>
  <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.js"></script>
+ <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/53148/snap.svg-min.js'></script>
  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.0/moment.min.js"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/js/tempusdominus-bootstrap-4.min.js" integrity="sha512-k6/Bkb8Fxf/c1Tkyl39yJwcOZ1P4cRrJu77p83zJjN2Z55prbFHxPs9vN7q3l3+tSMGPDdoH51AEU8Vgo1cgAA==" crossorigin="anonymous"></script>
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/css/tempusdominus-bootstrap-4.min.css" integrity="sha512-3JRrEUwaCkFUBLK1N8HehwQgu8e23jTH4np5NHOmQOobuC4ROQxFwFgBLTnhcnQRMs84muMh0PnnwXlPq5MGjg==" crossorigin="anonymous" />
+
 </body>

@@ -3,75 +3,164 @@
 {% block content %}
 
 <style>
-  .form-group{
+  .form-group {
     display: flex;
   }
-  form input{
+
+  form input {
     margin-right: 20px;
+  }
+
+  .container-fiuld {
+    margin-bottom: 0px !important;
+  }
+
+  .single-chart {
+    width: 33%;
+    justify-content: space-around;
+  }
+
+  .circular-chart {
+    display: block;
+    margin: 10px auto;
+    max-width: 80%;
+    max-height: 250px;
+  }
+
+  .circle-bg {
+    fill: none;
+    stroke: #eee;
+    stroke-width: 3.8;
+  }
+
+  .circle {
+    fill: none;
+    stroke-width: 2.8;
+    stroke-linecap: round;
+    animation: progress 1s ease-out forwards;
+  }
+
+  @keyframes progress {
+    0% {
+      stroke-dasharray: 0 100;
+    }
+  }
+
+  .circular-chart.green .circle {
+    stroke: #14c2a3;
+  }
+
+
+  .percentage {
+    fill: #666;
+    font-family: sans-serif;
+    font-size: 0.5em;
+    text-anchor: middle;
   }
 </style>
 
 <div class="container-fiuld" style="margin-top: 108px;margin-bottom: 350px;">
   <div class="row d-flex  align-items-center" style='height:595px;'>
-    <div class=" mx-auto my-3 " style="background:transparent;padding: 40px;max-width:85%;margin:40px auto;border-radius:4px;">
-    <form role="search" action="{% url 'search' %}" method="get" class='form-search'>
-      <div class="form-group">
-        <input class="form-control" name="convict_id" type="search" placeholder="convict id" aria-label="Search">
-        <input class="form-control" name="convict_name" type="search" placeholder="convict name" aria-label="Search">
-        <br>
-        <input class="form-control" name="crime_id" type="search" placeholder="crime id" aria-label="Search">
+    <div class=" mx-auto my-3 "
+      style="background:transparent;padding: 40px;max-width:85%;margin:40px auto;border-radius:4px;">
+      <form role="search" action="{% url 'search' %}" method="get" class='form-search'>
+        <div class="form-group">
+          <input class="form-control" name="convict_id" type="search" placeholder="convict id" aria-label="Search">
+          <input class="form-control" name="convict_name" type="search" placeholder="convict name" aria-label="Search">
+          <br>
+          <input class="form-control" name="crime_id" type="search" placeholder="crime id" aria-label="Search">
+        </div>
+
+        <div class="form-group"
+          style="display: flex;justify-content:center;align-items: center;padding:11px 10px;width: 100%;" type="submit">
+          <input type="submit" class="btn btn-danger col-md-4" name="" style='padding: 18px;width: 200px;'
+            value="Search">
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="search-box">
+    <div class="predict_values">
+      <h1>Prediction</h1>
+      <h3>Percentage</h3>
+      <div class="d-flex justify-content-center">
+
+        <div class="single-chart">
+          <svg viewBox="0 0 36 36" class="circular-chart green">
+            <path class="circle-bg" d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831" />
+            <path class="circle" stroke-dasharray="{{ 60 }}, 100" d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831" />
+            <text x="18" y="20.35" class="percentage">{{ 60 }}%</text>
+          </svg>
+        </div>
       </div>
 
-      <div class="form-group" style="display: flex;justify-content:center;align-items: center;padding:11px 10px;width: 100%;" type="submit">
-                      <input type="submit" class="btn btn-danger col-md-4" name="" style='padding: 18px;width: 200px;' value="Search">
-      </div>
-    </form>
-</div>
-</div>
+    </div>
+    <h3>search for something</h3>
+    {% if convict %}
 
-<h3>search for something</h3>
-
-
-{% if convict %}
-
-<div>
-    <h6>{{ search_hint }}</h6>
-    <h4>
+    <div>
+      <h6>{{ search_hint }}</h6>
+      <h4>
         <a href="{% url 'convictdetail' convict.id %}">{{ convict.pk }} {{ convict.name }}</a>
-    </h4>
-    <h6>{{ convict.place_of_birth }}</h6>
-    <h6>{{ convict.aliases }}</h6>
-</div>
-{% elif crime %}
-<div>
-    <h6>{{ search_hint }}</h6>
-    <h4>
+      </h4>
+      <h6>{{ convict.place_of_birth }}</h6>
+      <h6>{{ convict.aliases }}</h6>
+    </div>
+    {% elif crime %}
+    <div>
+      <h6>{{ search_hint }}</h6>
+      <h4>
         <a href="{% url 'blockdetail' crime.id %}">{{ crime.pk }}</a>
-    </h4>
-    <h6>{{ crime.charges }}</h6>
-    <h6>{{ crime.conviction_date }}</h6>
-    <h6>{{ crime.comments }}</h6>
-</div>
+      </h4>
+      <h6>{{ crime.charges }}</h6>
+      <h6>{{ crime.conviction_date }}</h6>
+      <h6>{{ crime.comments }}</h6>
+    </div>
 
-{% elif convict_list %}
+    {% elif convict_liic %}
 
-{% for convict in convict_list %}
+    {% for convict in convict_list %}
 
-<div>
-    <h6>{{ search_hint }}</h6>
-    <h4>
+    <div>
+      <h6>{{ search_hint }}</h6>
+      <h4>
         <a href="{% url 'convictdetail' convict.id %}">{{ convict.pk }} {{ convict.name }}</a>
-    </h4>
-    <h6>{{ convict.place_of_birth }}</h6>
-    <h6>{{ convict.aliases }}</h6>
-</div>
-<hr>
-{% endfor %}
+      </h4>
+      <h6>{{ convict.place_of_birth }}</h6>
+      <h6>{{ convict.aliases }}</h6>
+    </div>
+    <hr>
+    {% endfor %}
 
-{% else %}
-<!-- hit jr search madhe ky zale tr ch and search value nasel tr ch disnar -->
-<div>
-    <h4>No results, redefine search</h4>
-</div>
-{% endif %}
-{% endblock content %}
+    {% else %}
+    <!-- hit jr search madhe ky zale tr ch and search value nasel tr ch disnar -->
+    <div>
+      <h4>No results, redefine search</h4>
+    </div>
+
+  </div>
+
+  <script>
+    function animateValue(obj, start, end, duration) {
+      let startTimestamp = null;
+      const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        obj.innerHTML = Math.floor(progress * (end - start) + start);
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        }
+      };
+      window.requestAnimationFrame(step);
+    }
+
+    const obj = document.getElementById("value");
+    animateValue(obj, 0, 44, 5000);
+  </script>
+  {% endif %}
+  {% endblock content %}

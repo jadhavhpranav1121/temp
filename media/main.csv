@@ -1,3 +1,2 @@
-name,dob,nationality,location,financial_status
-sdd hari jadhav,01/10/2023,indian,indian,partial
-pranav hari jadhav,01/10/2023,indian,indian,partial
+criminal_id,name,gender,age,fin_status,education,population,likelihood,family_record,crime
+1,name,gender,12,sd,education,population,likelihood,family_record,"{'details': [{'crime_id': 5}, {'crime_id': 10, 'ssdf': 2}]}"

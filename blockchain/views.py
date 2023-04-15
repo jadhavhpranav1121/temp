@@ -39,9 +39,9 @@ class Blockchain:
         self.chain.append(block)
         return block
 
-    def create_block1(self, nonce, previous_hash, data, scale):
+    def create_block1(self, nonce, previous_hash, data, crime):
         dat = copy.deepcopy(data)
-        dat[0]["crime_list"].append(scale)
+        dat[0]["crime_list"]["details"].append(crime)
         block = {
             "index": len(self.chain) + 1,
             "timestamp": str(datetime.datetime.now()),
@@ -87,50 +87,40 @@ class Blockchain:
             block_index += 1
         return True
 
-    def age_function(born: date):
-        today = date.today()
-        return today.year - born.year - ((today.month, today.day) < (born.month, born.day))
-
-    def add_transaction(self, id, name, dob, nationality, location, Fin_status, crime_scale):
+    def add_transaction(
+        self, criminal_id, name, gender, age, fin_status, education, population, likelihood, family_record, crime
+    ):
+        values = ()
         flag = False
-
         for i in range(int(1), int(len(blockchain.chain))):
             d = blockchain.chain[i]["data"]
             e = blockchain.chain[i]
             if int(len(d)) > 0 and d[0]["name"] == name:
                 flag = True
-                return (-1, e)
+                values = (-1, e)
+                break
 
         if flag == False:
-            d1 = datetime.datetime.now()
-            d2 = datetime.datetime.now()
-
-            # self.data.append(
-            #     {
-            #         "criminal_id": id,
-            #         "name": name,
-            #         "dob": dob,
-            #         "nationality": nationality,
-            #         "location": location,
-            #         "age":self.age_function(dob),
-            #         "Fin_status":Fin_status,
-            #         "Population":"Problems",
-            #         "Likelihood":"Problems",
-            #         "Family_record":"Problems",
-            #         "nationality":"indian",
-            #         "location":"indian",
-            #         "crime_list":{
-            #             "details":[
-            #                 "crime_id(1213)":{crime_details}
-            #             ]
-            #          }
-            #         "time": str(datetime.datetime.now())
-            #     }
-            # )
+            self.data.append(
+                {
+                    "criminal_id": criminal_id,
+                    "name": name,
+                    "gender": gender,
+                    "age": age,
+                    "fin_status": fin_status,
+                    "education": education,
+                    "population": population,
+                    "likelihood": likelihood,
+                    "family_record": family_record,
+                    "crime_list": {"details": [crime]},
+                    "time": str(datetime.datetime.now()),
+                }
+            )
 
         previous_block = self.get_last_block()
         if flag == False:
             return (previous_block["index"] + 1, {})
+        return values
 
     def add_node(self, address):
         parsed_url = urlparse(address)
@@ -166,20 +156,25 @@ def mine_block(request):
     if request.method == "GET":
         received_json = json.loads(request.body)
         a = blockchain.add_transaction(
-            id=received_json["id"],
+            criminal_id=received_json["criminal_id"],
             name=received_json["name"],
-            dob=received_json["dob"],
-            nationality=received_json["nationality"],
-            location=received_json["location"],
-            financial_status=received_json["financial_status"],
-            crime_scale=received_json["crime_scale"],
+            gender=received_json["gender"],
+            age=received_json["age"],
+            fin_status=received_json["fin_status"],
+            education=received_json["education"],
+            population=received_json["population"],
+            likelihood=received_json["likelihood"],
+            family_record=received_json["family_record"],
+            crime=received_json["crime"],
         )
+        print(a)
         previous_block = blockchain.get_last_block()
         previous_nonce = previous_block["nonce"]
         nonce = blockchain.proof_of_work(previous_nonce)
+
         previous_hash = blockchain.hash(previous_block)
-        if a[0] == -1:
-            block = blockchain.create_block1(nonce, previous_hash, a[1]["data"], received_json["crime_scale"])
+        if a[int(0)] == -1:
+            block = blockchain.create_block1(nonce, previous_hash, a[int(1)]["data"], received_json["crime"])  # type: ignore
         else:
             block = blockchain.create_block(nonce, previous_hash)
         response = {
@@ -217,6 +212,7 @@ def mine_block(request):
 
 
 def get_chain(request):
+    response = "Error for getting blockchain"
     file = open("media/main.json", "r")
     chain1 = json.loads(file.read())
     blockchain.chain = chain1["chain"]
@@ -227,6 +223,7 @@ def get_chain(request):
 
 # Checking if the Blockchain is valid
 def is_valid(request):
+    response = "Houston, we have a problem. The Blockchain is not valid."
     if request.method == "GET":
         is_valid = blockchain.is_chain_valid(blockchain.chain)
         if is_valid:
@@ -239,6 +236,7 @@ def is_valid(request):
 # Adding a new transaction to the Blockchain
 @csrf_exempt
 def add_transaction(request):
+    response = ""
     if request.method == "POST":
         received_json = json.loads(request.body)
         transaction_keys = ["sender", "receiver", "amount", "time"]
@@ -246,14 +244,16 @@ def add_transaction(request):
             return "Some elements of the transaction are missing", HttpResponse(status=400)
 
         index = blockchain.add_transaction(
-            received_json["id"],
-            received_json["name"],
-            received_json["dob"],
-            received_json["nationality"],
-            received_json["location"],
-            received_json["financial_status"],
-            received_json["crime_list"],
-            received_json["time"],
+            criminal_id=received_json["criminal_id"],
+            name=received_json["name"],
+            gender=received_json["gender"],
+            age=received_json["age"],
+            fin_status=received_json["fin_status"],
+            education=received_json["education"],
+            population=received_json["population"],
+            likelihood=received_json["likelihood"],
+            family_record=received_json["family_record"],
+            crime=received_json["crime"],
         )
         response = {"message": f"This transaction will be added to Block {index}"}
     return JsonResponse(response)
@@ -262,6 +262,7 @@ def add_transaction(request):
 # Connecting new nodes
 @csrf_exempt
 def connect_node(request):
+    response = ""
     if request.method == "POST":
         received_json = json.loads(request.body)
         nodes = received_json.get("nodes")
@@ -278,6 +279,7 @@ def connect_node(request):
 
 # Replacing the chain by the longest chain if needed
 def replace_chain(request):
+    response = ""
     if request.method == "GET":
         is_chain_replaced = blockchain.replace_chain()
         if is_chain_replaced:
@@ -309,15 +311,31 @@ def convertToCSV():
         if temp not in freq:
             list1.append(tempInfo)
             freq[temp] = 1
-    fields = ["name", "dob", "nationality", "location", "financial_status"]
+    fields = [
+        "criminal_id",
+        "name",
+        "gender",
+        "age",
+        "fin_status",
+        "education",
+        "population",
+        "likelihood",
+        "family_record",
+        "crime",
+    ]
     rows = []
     for i in list1:
         l = []
+        l.append(i["criminal_id"])
         l.append(i["name"])
-        l.append(i["dob"])
-        l.append(i["nationality"])
-        l.append(i["location"])
-        l.append(i["financial_status"])
+        l.append(i["gender"])
+        l.append(i["age"])
+        l.append(i["fin_status"])
+        l.append(i["education"])
+        l.append(i["population"])
+        l.append(i["likelihood"])
+        l.append(i["family_record"])
+        l.append(i["crime_list"])
         rows.append(l)
 
     with open("media/main.csv", "w") as f:
