@@ -1,2 +1,2 @@
-criminal_id,name,gender,age,fin_status,education,population,likelihood,family_record,crime
-1,name,gender,12,sd,education,population,likelihood,family_record,"{'details': [{'crime_id': 5}, {'crime_id': 10, 'ssdf': 2}]}"
+criminal_id,name,gender,dob,fin_status,education,population,family_record,crime
+3,c,c,2023-02-01,c,c,unknown,unknown,1

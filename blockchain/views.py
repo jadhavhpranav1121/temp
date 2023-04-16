@@ -15,6 +15,7 @@ from django.core.files.base import ContentFile
 import csv
 from crimechain.settings import MEDIA_URL
 from datetime import date
+from django.views.decorators.csrf import csrf_exempt
 
 
 class Blockchain:
@@ -87,9 +88,7 @@ class Blockchain:
             block_index += 1
         return True
 
-    def add_transaction(
-        self, criminal_id, name, gender, age, fin_status, education, population, likelihood, family_record, crime
-    ):
+    def add_transaction(self, criminal_id, name, gender, dob, fin_status, education, population, family_record, crime):
         values = ()
         flag = False
         for i in range(int(1), int(len(blockchain.chain))):
@@ -106,11 +105,10 @@ class Blockchain:
                     "criminal_id": criminal_id,
                     "name": name,
                     "gender": gender,
-                    "age": age,
+                    "dob": dob,
                     "fin_status": fin_status,
                     "education": education,
                     "population": population,
-                    "likelihood": likelihood,
                     "family_record": family_record,
                     "crime_list": {"details": [crime]},
                     "time": str(datetime.datetime.now()),
@@ -152,22 +150,23 @@ root_node = "e36f0158f0aed45b3bc755dc52ed4560d"
 
 
 # Mining a new block
+@csrf_exempt
 def mine_block(request):
-    if request.method == "GET":
+    if request.method == "POST":
         received_json = json.loads(request.body)
         a = blockchain.add_transaction(
             criminal_id=received_json["criminal_id"],
             name=received_json["name"],
             gender=received_json["gender"],
-            age=received_json["age"],
+            dob=received_json["dob"],
             fin_status=received_json["fin_status"],
             education=received_json["education"],
             population=received_json["population"],
-            likelihood=received_json["likelihood"],
+            # likelihood=received_json["likelihood"],
             family_record=received_json["family_record"],
             crime=received_json["crime"],
         )
-        print(a)
+        print("dfsdf")
         previous_block = blockchain.get_last_block()
         previous_nonce = previous_block["nonce"]
         nonce = blockchain.proof_of_work(previous_nonce)
@@ -247,11 +246,11 @@ def add_transaction(request):
             criminal_id=received_json["criminal_id"],
             name=received_json["name"],
             gender=received_json["gender"],
-            age=received_json["age"],
+            dob=received_json["dob"],
             fin_status=received_json["fin_status"],
             education=received_json["education"],
             population=received_json["population"],
-            likelihood=received_json["likelihood"],
+            # likelihood=received_json["likelihood"],
             family_record=received_json["family_record"],
             crime=received_json["crime"],
         )
@@ -315,11 +314,10 @@ def convertToCSV():
         "criminal_id",
         "name",
         "gender",
-        "age",
+        "dob",
         "fin_status",
         "education",
         "population",
-        "likelihood",
         "family_record",
         "crime",
     ]
@@ -329,13 +327,12 @@ def convertToCSV():
         l.append(i["criminal_id"])
         l.append(i["name"])
         l.append(i["gender"])
-        l.append(i["age"])
+        l.append(i["dob"])
         l.append(i["fin_status"])
         l.append(i["education"])
         l.append(i["population"])
-        l.append(i["likelihood"])
         l.append(i["family_record"])
-        l.append(i["crime_list"])
+        l.append(len(i["crime_list"]["details"]))
         rows.append(l)
 
     with open("media/main.csv", "w") as f:
