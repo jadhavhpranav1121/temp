@@ -1,3 +1,4 @@
+import time
 from django.shortcuts import render
 import datetime
 import hashlib
@@ -14,8 +15,15 @@ from django.core.files.storage import FileSystemStorage
 from django.core.files.base import ContentFile
 import csv
 from crimechain.settings import MEDIA_URL
-from datetime import date
+import datetime
 from django.views.decorators.csrf import csrf_exempt
+
+
+def calculate_age(born1):
+    format = "%Y-%m-%d"  # The format
+    born = datetime.datetime.strptime(born1, format)
+    today = datetime.date.today()
+    return today.year - born.year - ((today.month, today.day) < (born.month, born.day))
 
 
 class Blockchain:
@@ -166,7 +174,7 @@ def mine_block(request):
             family_record=received_json["family_record"],
             crime=received_json["crime"],
         )
-        print("dfsdf")
+        print(a)
         previous_block = blockchain.get_last_block()
         previous_nonce = previous_block["nonce"]
         nonce = blockchain.proof_of_work(previous_nonce)
@@ -314,20 +322,22 @@ def convertToCSV():
         "criminal_id",
         "name",
         "gender",
-        "dob",
+        "age",
         "fin_status",
         "education",
         "population",
         "family_record",
         "crime",
     ]
+
     rows = []
     for i in list1:
         l = []
+        # print(calculate_age(i["dob"]))
         l.append(i["criminal_id"])
         l.append(i["name"])
         l.append(i["gender"])
-        l.append(i["dob"])
+        l.append(calculate_age(i["dob"]))
         l.append(i["fin_status"])
         l.append(i["education"])
         l.append(i["population"])

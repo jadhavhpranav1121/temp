@@ -1,2 +1,2 @@
-criminal_id,name,gender,dob,fin_status,education,population,family_record,crime
-3,c,c,2023-02-01,c,c,unknown,unknown,1
+criminal_id,name,gender,age,fin_status,education,population,family_record,crime
+3,c,c,0,c,c,unknown,unknown,1

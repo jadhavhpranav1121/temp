@@ -16,10 +16,6 @@ from django.core.files import File
 from datetime import date
 
 
-def calculate_age(born):
-    today = date.today()
-    return today.year - born.year - ((today.month, today.day) < (born.month, born.day))
-
 
 class Home(ListView):
     model = Block
@@ -117,9 +113,7 @@ class CreateBlock(LoginRequiredMixin, CreateView):
             },
         }
         headers = {"content-type": "application/json"}
-
         response = requests.post("http://127.0.0.1:8000/mine_block", data=json.dumps(list_crime), headers=headers)
-        print(response.text)
         return super().form_valid(form)
 
 
