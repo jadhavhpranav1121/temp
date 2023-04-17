@@ -14,7 +14,8 @@ from rest_framework.decorators import api_view
 import json
 from django.core.files import File
 from datetime import date
-
+from django import forms
+from django_flatpickr.widgets import DatePickerInput
 
 
 class Home(ListView):
@@ -35,32 +36,39 @@ class CreateConvict(LoginRequiredMixin, CreateView):
         "financial_background",
         "family_record",
     ]
+    widgets = {"date_of_birth": DatePickerInput()}
 
     def get_form(self, form_class=None):  # for dropdown
-        form = super().get_form(form_class=form_class)
-        form.fields["gender"] = forms.ChoiceField(choices=[("Male", "Male"), ("Female", "Female"), ("Other", "Other")])
-        form.fields["place_of_birth_type"] = forms.ChoiceField(choices=[("Urban", "Urban"), ("Rural", "Rural")])
-        form.fields["education"] = forms.ChoiceField(
-            choices=[
-                ("", ""),
-                ("Illiterate", "Illiterate"),
-                ("school dropout", "school dropout"),
-                ("school", "school"),
-                ("graduate", "graduate"),
-                ("post graduate", "post graduate"),
-            ]
-        )
-        form.fields["financial_background"] = forms.ChoiceField(
-            choices=[
-                ("", ""),
-                ("Below poverty", "Below poverty"),
-                ("lower class", "lower class"),
-                ("middle", "middle"),
-                ("upper", "upper"),
-            ]
-        )
-        form.fields["family_record"] = forms.ChoiceField(choices=[("", ""), ("Yes", "Yes"), ("No", "No")])
-        return form
+        try:
+            form = super().get_form(form_class=form_class)
+            form.fields["date_of_birth"] = forms.DateField(widget=DatePickerInput())
+            form.fields["gender"] = forms.ChoiceField(
+                choices=[("Male", "Male"), ("Female", "Female"), ("Other", "Other")]
+            )
+            form.fields["place_of_birth_type"] = forms.ChoiceField(choices=[("Urban", "Urban"), ("Rural", "Rural")])
+            form.fields["education"] = forms.ChoiceField(
+                choices=[
+                    ("", ""),
+                    ("Illiterate", "Illiterate"),
+                    ("school dropout", "school dropout"),
+                    ("school", "school"),
+                    ("graduate", "graduate"),
+                    ("post graduate", "post graduate"),
+                ]
+            )
+            form.fields["financial_background"] = forms.ChoiceField(
+                choices=[
+                    ("", ""),
+                    ("Below poverty", "Below poverty"),
+                    ("lower class", "lower class"),
+                    ("middle", "middle"),
+                    ("upper", "upper"),
+                ]
+            )
+            form.fields["family_record"] = forms.ChoiceField(choices=[("", ""), ("Yes", "Yes"), ("No", "No")])
+            return form
+        except Exception as e:
+            print(e)
 
     success_url = reverse_lazy("home")
     template_name = "core/createconvict.html"
@@ -82,9 +90,14 @@ class CreateBlock(LoginRequiredMixin, CreateView):
     ]
 
     def get_form(self, form_class=None):  # for dropdown
-        form = super().get_form(form_class=form_class)
-        form.fields["crime_type"] = forms.ChoiceField(choices=[("Violent", "Violent"), ("Non-Violent", "Non-Violent")])
-        return form
+        try:
+            form = super().get_form(form_class=form_class)
+            form.fields["crime_type"] = forms.ChoiceField(
+                choices=[("Violent", "Violent"), ("Non-Violent", "Non-Violent")]
+            )
+            return form
+        except Exception as e:
+            print(e)
 
     success_url = reverse_lazy("home")
     template_name = "core/createblock.html"

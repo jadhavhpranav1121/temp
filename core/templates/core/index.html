@@ -3,7 +3,9 @@
 <html lang="en">
 <head>
     {% load sass_tags %}
-
+    {% load bootstrap4 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript jquery='full' %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -200,6 +202,7 @@
 <a id="scroll-top"></a>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css'></script>
 <script src="/static/js/swiper-bundle.min.js"></script>
 <script src="/static/js/swiper.js"></script>
 <script src="/static/js/app.js"></script>

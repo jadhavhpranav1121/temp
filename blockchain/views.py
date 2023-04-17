@@ -27,7 +27,11 @@ def calculate_age(born1):
 
 
 class Blockchain:
-    def __init__(self, chain1=[]):
+    def __init__(self):
+        file = open("media/main.json", "r")
+        chain1 = json.loads(file.read())
+        print("blockchain -->", chain1)
+        self.chain = chain1["chain"]
         if chain1:
             self.chain = chain1["chain"]
         else:
@@ -166,7 +170,7 @@ def mine_block(request):
             criminal_id=received_json["criminal_id"],
             name=received_json["name"],
             gender=received_json["gender"],
-            dob=received_json["dob"],
+            dob=str(received_json["dob"]),
             fin_status=received_json["fin_status"],
             education=received_json["education"],
             population=received_json["population"],

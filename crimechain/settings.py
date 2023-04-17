@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     "core",
     "user",
     "blockchain",
+    "admin_page",
     "crispy_forms",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -43,6 +44,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "sass_processor",
+    "django_flatpickr",
+    "bootstrap4",
 ]
 
 MIDDLEWARE = [
@@ -80,6 +83,9 @@ STATICFILES_FINDERS = (
     # other finders..
     "sass_processor.finders.CssFinder",
 )
+BOOTSTRAP4 = {
+    "include_jquery": True,
+}
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases

@@ -1,2 +1,2 @@
 criminal_id,name,gender,age,fin_status,education,population,family_record,crime
-3,c,c,0,c,c,unknown,unknown,1
+4,we,Male,22,lower class,school dropout,Urban,Yes,2

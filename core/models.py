@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django.utils import timezone
+from django_flatpickr.widgets import DatePickerInput, TimePickerInput, DateTimePickerInput
 
 
 # Create your models here.
@@ -20,7 +21,7 @@ class Convict(models.Model):
     education = models.CharField(max_length=100, blank=True)
     financial_background = models.CharField(max_length=100, blank=True)
     family_record = models.CharField(max_length=100, blank=True)
-    
+
 
 class Block(models.Model):
     def __str__(self):
