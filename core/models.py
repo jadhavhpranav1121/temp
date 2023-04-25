@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django.utils import timezone
-from django_flatpickr.widgets import DatePickerInput, TimePickerInput, DateTimePickerInput
+#from django_flatpickr.widgets import DatePickerInput, TimePickerInput, DateTimePickerInput
 
 
 # Create your models here.
@@ -23,6 +23,20 @@ class Convict(models.Model):
     family_record = models.CharField(max_length=100, blank=True)
 
 
+
+    
+
+class ConvictValidate(models.Model):
+    def __str__(self):
+        return str(self.user.id) +" validated convict " + str(self.convict.id)
+    
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    convict = models.ForeignKey(Convict, on_delete=models.CASCADE)
+
+    def get_absolute_url(self):
+        return reverse('convictdetail', kwargs={'pk': self.convict.pk})
+
+
 class Block(models.Model):
     def __str__(self):
         return self.perp.name + " - " + str(self.pk)
@@ -37,3 +51,16 @@ class Block(models.Model):
     comments = models.TextField(max_length=300, blank=True)
     sentencer = models.CharField(max_length=100, blank=True)
     sentence = models.CharField(max_length=100, blank=True)
+
+    #def get_absolute_url(self):
+    #    return reverse('blockdetail', kwargs={'pk': self.block.pk})
+
+class BlockValidate(models.Model):
+    def __str__(self):
+        return str(self.user.id) +" validated block " + str(self.block.id)
+    
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    block = models.ForeignKey(Block, on_delete=models.CASCADE)
+
+    def get_absolute_url(self):
+        return reverse('blockdetail', kwargs={'pk': self.block.pk})

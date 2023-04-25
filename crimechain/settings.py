@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-!8o0*!_z@7zettykjde_l2$fi1cf1-8tkra$2yd&6f%+wh^lox"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG =  False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -77,6 +77,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "crimechain.wsgi.application"
+WSGI_APPLICATION_OPTIONS = {'timeout': 300}
 STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",

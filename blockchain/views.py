@@ -30,7 +30,7 @@ class Blockchain:
     def __init__(self):
         file = open("media/main.json", "r")
         chain1 = json.loads(file.read())
-        print("blockchain -->", chain1)
+        #print("blockchain -->", chain1)
         self.chain = chain1["chain"]
         if chain1:
             self.chain = chain1["chain"]

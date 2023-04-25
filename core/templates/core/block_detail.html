@@ -16,4 +16,28 @@
 
 
 </div>
+<div>
+    {% if total_validates|length == 3 %}
+        <h6>We have received enough validations</h6>
+    {% elif validated_by_curr_user %}
+        <h6>You have already validated it</h6>
+    {% else %}
+      <form action="{{ validate_url }}" method="GET">
+        <button type="submit" class="btn btn-primary">Validate</button>
+      </form>
+    {% endif %}
+
+    <br>
+    <br>
+    {% if total_validates %}
+      {{ total_validates|length }} validations have been done
+      <p>Validator are:- </p>
+      <ul>{% for validator in total_validates %}
+        <li>{{ validator.user.id }} - {{ validator.user.username }}</li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      No Validations yet
+    {% endif %}
+</div>
 {% endblock content %}
