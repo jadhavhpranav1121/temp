@@ -4,16 +4,17 @@
 {% block content %}
 
 <style>
-    .criminal{
-      margin-top: 200px;
+  .criminal {
+    margin-top: 200px;
     width: 100%;
     margin-bottom: 210px;
     display: flex;
     flex-direction: column;
     justify-content: center;
 
-    }
-    .container-fiuld {
+  }
+
+  .container-fiuld {
     margin-bottom: 0px !important;
   }
 
@@ -103,17 +104,38 @@
         </tr>
       </tbody>
     </table>
+    {% if total_validates|length == 3 %}
+        <h6>We have received enough validations</h6>
+    {% elif validated_by_curr_user %}
+        <h6>You have already validated it</h6>
+    {% else %}
+      <form action="{{ validate_url }}" method="GET">
+        <button type="submit" class="btn btn-primary">Validate</button>
+      </form>
+    {% endif %}
+
     <br>
     <br>
+    {% if total_validates %}
+      {{ total_validates|length }} validations have been done
+      <p>Validator are:- </p>
+      <ul>{% for validator in total_validates %}
+        <li>{{ validator.user.id }} - {{ validator.user.username }}</li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      No Validations yet
+    {% endif %}
+
     <br>
     <br>
     <div class="predict_values">
       <h1 style='text-align: center;'>Prediction</h1>
       <br>
-      <h3  style='text-align: center;'>Percentage</h3>
+      <h3 style='text-align: center;'>Percentage</h3>
       <br>
       <br>
-      <div class="d-flex justify-content-center"  style='display: flex;justify-content: center;'>
+      <div class="d-flex justify-content-center" style='display: flex;justify-content: center;'>
 
         <div class="single-chart">
           <svg viewBox="0 0 36 36" class="circular-chart green">
@@ -129,7 +151,7 @@
       </div>
 
     </div>
-    </div>
+  </div>
 
 
 
