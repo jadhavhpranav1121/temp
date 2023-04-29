@@ -11,6 +11,8 @@ urlpatterns = [
     path("createconvict/", core_views.CreateConvict.as_view(), name="createconvict"),
     path("createblock/", core_views.CreateBlock.as_view(), name="createblock"),
     path("convict/<int:pk>/", core_views.ConvictDetailView.as_view(), name="convictdetail"),
+    path('convict/<int:pk>/validate/create/', core_views.ConvictValidateCreateView.as_view(), name='convictvalidate_create'),
+    path('block/<int:pk>/validate/create/', core_views.BlockValidateCreateView.as_view(), name='blockvalidate_create'),
     path("block/<int:pk>/", core_views.BlockDetailView.as_view(), name="blockdetail"),
     path("search/", core_views.SearchView.as_view(), name="search"),
     path("login/", auth_views.LoginView.as_view(template_name="core/login.html"), name="login"),
