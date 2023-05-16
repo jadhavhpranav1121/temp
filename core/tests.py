@@ -1,4 +1,5 @@
 from django.test import TestCase
+from django.urls import reverse
 
 from core.models import Convict
 
@@ -18,9 +19,15 @@ class convictTest(TestCase):
             family_record="",
         )
 
-    def test_animals_can_speak(self):
-        """Animals that can speak are correctly identified"""
-        lion = Convict.objects.get(name="lion")
-        self.assertEqual(lion., set())
+    # def test_animals_can_speak(self):
+    #     """Animals that can speak are correctly identified"""
+    #     lion = Convict.objects.get(name="lion")
+    #     self.assertEqual(lion, set())
 
-class LoginTest(TestCase):
+    def test_whatever_list_view(self):
+        lion = Convict.objects.get(name="lion")
+        url = "https://localhost:8000/createconvict"
+        resp = self.client.get(url)
+
+        self.assertEqual(resp.status_code, 301)
+        self.assertIn(lion.name, resp.content)
