@@ -60,6 +60,34 @@
     font-size: 0.5em;
     text-anchor: middle;
   }
+
+  .btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .btn-primary {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+  }
 </style>
 
 <div class="d-flex justify-content-center">
@@ -104,29 +132,32 @@
         </tr>
       </tbody>
     </table>
-    {% if total_validates|length == 3 %}
-        <h6>We have received enough validations</h6>
-    {% elif validated_by_curr_user %}
-        <h6>You have already validated it</h6>
-    {% else %}
+
+
+    <div style="display: flex;align-items: flex-start;margin-left:7%;margin-top:5%;flex-direction: column;">
+      {% if total_validates|length == 3 %}
+      <h3>We have received enough validations</h3>
+      {% elif validated_by_curr_user %}
+      <h3>You have already validated it</h3>
+      {% else %}
       <form action="{{ validate_url }}" method="GET">
         <button type="submit" class="btn btn-primary">Validate</button>
       </form>
-    {% endif %}
+      {% endif %}
 
-    <br>
-    <br>
-    {% if total_validates %}
-      {{ total_validates|length }} validations have been done
-      <p>Validator are:- </p>
+      <br>
+      <br>
+      {% if total_validates %}
+      <h5>{{ total_validates|length }} validations have been done</h5>
+      <h6>Validator are:- </h6>
       <ul>{% for validator in total_validates %}
-        <li>{{ validator.user.id }} - {{ validator.user.username }}</li>
+        <li style='margin-left: 20px;font-size: 30px;'>{{ validator.user.id }} . {{ validator.user.username }}</li>
         {% endfor %}
       </ul>
-    {% else %}
-      No Validations yet
-    {% endif %}
-
+      {% else %}
+      <h5>No Validations yet</h5>
+      {% endif %}
+    </div>
     <br>
     <br>
     <div class="predict_values">

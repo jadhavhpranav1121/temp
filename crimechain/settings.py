@@ -12,7 +12,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+import mimetypes
 
+mimetypes.add_type("text/css", ".css", True)
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -24,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-!8o0*!_z@7zettykjde_l2$fi1cf1-8tkra$2yd&6f%+wh^lox"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG =  False
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -35,7 +37,7 @@ INSTALLED_APPS = [
     "core",
     "user",
     "blockchain",
-    "admin_page",
+    # "admin_page",
     "crispy_forms",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -77,7 +79,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "crimechain.wsgi.application"
-WSGI_APPLICATION_OPTIONS = {'timeout': 300}
+WSGI_APPLICATION_OPTIONS = {"timeout": 300}
 STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",

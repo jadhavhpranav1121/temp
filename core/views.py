@@ -183,54 +183,56 @@ class SearchView(LoginRequiredMixin, ListView):
 
 class BlockDetailView(LoginRequiredMixin, DetailView):
     model = Block
+
     # template_name='core/blockdetailview.html'
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['validate_url'] = reverse_lazy('blockvalidate_create', kwargs={'pk': self.object.pk})
-        context['total_validates'] = BlockValidate.objects.filter(block=self.object)
-        context['validated_by_curr_user'] = len(BlockValidate.objects.filter(user=self.request.user,block=self.object))
+        context["validate_url"] = reverse_lazy("blockvalidate_create", kwargs={"pk": self.object.pk})
+        context["total_validates"] = BlockValidate.objects.filter(block=self.object)
+        context["validated_by_curr_user"] = len(BlockValidate.objects.filter(user=self.request.user, block=self.object))
         return context
-    
-class BlockValidateCreateView(LoginRequiredMixin,CreateView):
+
+
+class BlockValidateCreateView(LoginRequiredMixin, CreateView):
     model = BlockValidate
     fields = []
-    template_name='core/blockvalidate_create.html'
-    
+    template_name = "core/blockvalidate_create.html"
+
     def form_valid(self, form):
         form.instance.user = self.request.user
-        form.instance.block_id = self.kwargs['pk']
-        return super().form_valid(form)  
-    
+        form.instance.block_id = self.kwargs["pk"]
+        return super().form_valid(form)
 
     def get_success_url(self):
         return self.object.get_absolute_url()
-
 
 
 class ConvictDetailView(LoginRequiredMixin, DetailView):
     model = Convict
+
     # template_name='core/convictdetailview.html'
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['validate_url'] = reverse_lazy('convictvalidate_create', kwargs={'pk': self.object.pk})
-        context['total_validates'] = ConvictValidate.objects.filter(convict=self.object)
-        context['validated_by_curr_user'] = len(ConvictValidate.objects.filter(user=self.request.user,convict=self.object))
+        context["validate_url"] = reverse_lazy("convictvalidate_create", kwargs={"pk": self.object.pk})
+        context["total_validates"] = ConvictValidate.objects.filter(convict=self.object)
+        context["validated_by_curr_user"] = len(
+            ConvictValidate.objects.filter(user=self.request.user, convict=self.object)
+        )
         return context
 
-class ConvictValidateCreateView(LoginRequiredMixin,CreateView):
+
+class ConvictValidateCreateView(LoginRequiredMixin, CreateView):
     model = ConvictValidate
     fields = []
-    template_name='core/convictvalidate_create.html'
-    
+    template_name = "core/convictvalidate_create.html"
+
     def form_valid(self, form):
         form.instance.user = self.request.user
-        form.instance.convict_id = self.kwargs['pk']
-        return super().form_valid(form)  
-    
+        form.instance.convict_id = self.kwargs["pk"]
+        return super().form_valid(form)
 
     def get_success_url(self):
         return self.object.get_absolute_url()
-    
 
 
 # Create your views here.
