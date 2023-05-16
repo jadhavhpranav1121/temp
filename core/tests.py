@@ -10,7 +10,7 @@ class convictTest(TestCase):
             name="lion",
             aliases="roar",
             gender="Male",
-            date_of_birth="16/05/2023",
+            date_of_birth="2023-04-15",
             place_of_birth="df",
             place_of_birth_type="Urban",
             education="",
@@ -21,4 +21,6 @@ class convictTest(TestCase):
     def test_animals_can_speak(self):
         """Animals that can speak are correctly identified"""
         lion = Convict.objects.get(name="lion")
-        self.assertEqual(lion, 'The lion says "roar"')
+        self.assertEqual(lion., set())
+
+class LoginTest(TestCase):
