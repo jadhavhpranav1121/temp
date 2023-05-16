@@ -249,16 +249,16 @@ position: relative;'>
   <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/53148/snap.svg-min.js'></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.0/moment.min.js"></script>
   <script type="text/javascript">
-    var x = $("#id_conviction_date").val();
-    if (x != undefined) {
-      x = x.split("-").reverse().join("/");
-      $("#id_conviction_date").val(x)
-    }
+    // var x = $("#id_conviction_date").val();
+    // if (x != undefined) {
+    //   x = x.split("-").reverse().join("/");
+    //   $("#id_conviction_date").val(x)
+    // }
 
     $("#id_conviction_date").datepicker({
       //Datepicker settings
       minDate: new Date(),
-      dateFormat: "dd/mm/yy",
+      dateFormat: "yy-mm-dd",
       endDate: "0d",
       clearBtn: true,
       todayBtn: true,
@@ -267,17 +267,19 @@ position: relative;'>
     $("#id_fir_date").datepicker({
       //Datepicker settings
 
-      dateFormat: "dd/mm/yy",
+      dateFormat: "yy-mm-dd",
       endDate: "0d",
       clearBtn: true,
       todayBtn: true,
       todayHighlight: true
     })
     $('#id_date_of_birth').attr('autocomplete', 'off')
-    $('#id_date_of_birth').val('dd/mm/yyyy')
+    $('#id_fir_date').attr('autocomplete', 'off')
+    $('#id_date_of_birth').val('yyyy-mm-dd')
+    $('#id_fir_date').val('yyyy-mm-dd')
     $("#id_date_of_birth").datepicker({
       //Datepicker settings
-      dateFormat: "dd/mm/yy",
+      dateFormat: "yy-mm-dd",
       endDate: "0d",
       clearBtn: true,
       todayBtn: true,

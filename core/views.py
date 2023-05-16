@@ -16,6 +16,7 @@ from django.core.files import File
 from datetime import date
 from django import forms
 from django_flatpickr.widgets import DatePickerInput
+from django.test import TestCase
 
 
 class Home(ListView):
@@ -239,3 +240,6 @@ class ConvictValidateCreateView(LoginRequiredMixin, CreateView):
 # Create your views here.
 def page_not_found_view(request, exception):
     return render(request, "core/404.html", status=404)
+
+
+# Tests

@@ -1,8 +1,11 @@
+from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import User
 from django.forms import DateInput
 from django.urls import reverse
 from django.utils import timezone
+
+from django import forms
 
 # from django_flatpickr.widgets import DatePickerInput, TimePickerInput, DateTimePickerInput
 
@@ -19,7 +22,7 @@ class Convict(models.Model):
     gender = models.CharField(max_length=20)
     place_of_birth = models.CharField(max_length=510)
     place_of_birth_type = models.CharField(max_length=100, blank=True)
-    date_of_birth = models.DateField(default="dd/mm/yyyy")
+    date_of_birth = models.DateField()
     education = models.CharField(max_length=100, blank=True)
     financial_background = models.CharField(max_length=100, blank=True)
     family_record = models.CharField(max_length=100, blank=True)
@@ -45,7 +48,7 @@ class Block(models.Model):
     charges_code = models.CharField(max_length=200, blank=True, null=True)
     crime_type = models.CharField(max_length=100, blank=True, null=True)
     known_accomplices = models.CharField(max_length=100, blank=True)
-    fir_date = models.DateField(blank=True, default="dd/mm/yyyy")
+    fir_date = models.DateField(blank=True)
     conviction_date = models.DateField(default=timezone.now)
     comments = models.TextField(max_length=300, blank=True)
     sentencer = models.CharField(max_length=100, blank=True)

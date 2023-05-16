@@ -18,6 +18,7 @@ mimetypes.add_type("text/css", ".css", True)
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+USE_L10N = False
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -30,6 +31,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
+DATE_INPUT_FORMATS = ["%d/%m/%Y"]
 
 # Application definition
 
