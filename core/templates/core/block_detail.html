@@ -2,42 +2,145 @@
 
 
 {% block content %}
-<div>
+<style>
+  .form-group {
+    display: flex;
+  }
 
-    <p> id is -> {{ object.id }}</p>
-    <p>convict is -> {{ object.perp }}</p>
-    <p>charges are -> {{ object.charges }}</p>
-    <p>accomplices are -> {{ object.known_accomplices }}</p>
-    <p>date of fir -> {{ object.fir_date }}</p>
-    <p>date of sentence -> {{ object.conviction_date }}</p>
-    <p>comments on crime -> {{ object.comments }}</p>
-    <p>sentencer -> {{ object.sentencer }}</p>
-    <p>sentence -> {{ object.sentence }}</p>
+  form input {
+    margin-right: 20px;
+  }
+
+  .container-fiuld {
+    margin-bottom: 0px !important;
+  }
+
+  table {
+    border: 1px solid white;
+  }
+
+  table td {
+    text-align: center;
+    font-size: 20px;
+  }
+
+  table th {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 0.15rem 3.3rem;
+  }
+
+  .btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+}
+</style>
+<div class="container-fiuld" style="margin-top: 167px;margin-bottom: 350px;">
+  <div class="d-flex justify-content-center">
+    <h1 style='text-align: center;margin-bottom:30px'>Information About Crime</h1>
+    <table class="table table-bordered" style='
+    width: 700px;'>
+      <tbody>
+        <tr>
+          <th style='width: 40px;'>ID</th>
+          <th>Convict</th>
+          <th>Charges</th>
+          <th>Accomplices</th>
+          <th>Date of FIR</th>
+          <th>Date Of Sentence</th>
+          <th>Comments On Crime </th>
+          <th>Sentencer </th>
+          <th>Sentence </th>
+        </tr>
+        <tr>
+          <td>
+            <h4>
+              {{ object.id  }}
+            </h4>
+          </td>
+          <td>
+            <h6>{{ object.perp }}</h6>
+          </td>
+          <td>
+            <h6>{{ object.charges }}</h6>
+          </td>
+          <td>
+            <h6>{{ object.known_accomplices }}</h6>
+          </td>
+          <td>
+            <h6>{{ object.fir_date }}</h6>
+          </td>
+          <td>
+            <h6>{{ object.conviction_date }}</h6>
+          </td>
+          <td>
+            <h6>{{ object.comments }}</h6>
+          </td>
+          <td>
+            <h6>{{ object.sentencer }}</h6>
+          </td>
+          <td>
+            <h6>{{ object.sentence }}</h6>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
 
 
 </div>
+<br>
+<br>
 <div>
+
+  <div  style="display: flex;align-items: flex-start;margin-left:7%;flex-direction: column;" >
     {% if total_validates|length == 3 %}
-        <h6>We have received enough validations</h6>
+    <h3>We have received enough validations</h3>
     {% elif validated_by_curr_user %}
-        <h6>You have already validated it</h6>
+    <h3>You have already validated it</h3>
     {% else %}
-      <form action="{{ validate_url }}" method="GET">
-        <button type="submit" class="btn btn-primary">Validate</button>
-      </form>
+    <form action="{{ validate_url }}" method="GET">
+      <button type="submit" class="btn btn-primary">Validate</button>
+    </form>
     {% endif %}
 
     <br>
     <br>
     {% if total_validates %}
-      {{ total_validates|length }} validations have been done
-      <p>Validator are:- </p>
-      <ul>{% for validator in total_validates %}
-        <li>{{ validator.user.id }} - {{ validator.user.username }}</li>
-        {% endfor %}
-      </ul>
+    <h5>{{ total_validates|length }} validations have been done</h5>
+    <h6>Validator are:- </h6>
+    <ul>{% for validator in total_validates %}
+      <li style='margin-left: 20px;font-size: 30px;'>{{ validator.user.id }} . {{ validator.user.username }}</li>
+      {% endfor %}
+    </ul>
     {% else %}
-      No Validations yet
+    <h5>No Validations yet</h5>
     {% endif %}
+  </div>
+
 </div>
 {% endblock content %}

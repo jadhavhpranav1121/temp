@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     {% load sass_tags %}
-    
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -102,9 +102,13 @@
             padding: 0.5rem;
             border: 1px solid white;
         }
+        .form-control:focus{
+          color:black !important;
+        }
     </style>
 </head>
-<body class="header-fixed main home3">
+<body class="header-fixed main home3" style=' min-height: 100vh;
+position: relative;''>
         <!-- preloade -->
         <div class="preload preload-container">
             <div class="preload-logo"></div>
@@ -170,7 +174,8 @@
 <br>
 <br>
 <br>
-<footer id="footer">
+<footer id="footer" style='position: absolute;
+bottom: 0;width: 100%;'>
 
   <div class="footer-bottom">
       <div class="container">
@@ -179,17 +184,9 @@
                   <p>CrimeChain 2022- ALL rights reserved AISSMS COE 2023</p>
               </div>
               <ul class="list">
+
                   <li>
-                      <a href="#">Privacy Policy</a>
-                  </li>
-                  <li>
-                      <a href="#">Cookies</a>
-                  </li>
-                  <li>
-                      <a href="#">Terms & Conditions</a>
-                  </li>
-                  <li>
-                      <a href="contact/">Contact Us</a>
+                      <a href="/contact">Contact Us</a>
                   </li>
               </ul>
           </div>
