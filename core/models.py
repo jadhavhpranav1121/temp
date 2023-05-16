@@ -7,9 +7,6 @@ from django.utils import timezone
 
 from django import forms
 
-# from django_flatpickr.widgets import DatePickerInput, TimePickerInput, DateTimePickerInput
-
-
 # Create your models here.
 
 

@@ -3374,7 +3374,7 @@ textarea.form-control-lg {
 
 .btn-outline-danger {
   color: #dc3545;
-  border-color: #dc3545;
+  border-color: #dc3545 !important;
 }
 .btn-outline-danger:hover {
   color: #fff;

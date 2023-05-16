@@ -30,13 +30,14 @@
     <div class="w-50 mx-auto my-3" style="background:transparent;padding: 40px;max-width:100%;margin:40px auto;border-radius:4px; box-shadow:0 4px 10px 4px rgba(19, 35, 47, 0.9);border: 2px solid white;">
     <form method="POST"  enctype="multipart/form-data" style="padding: 10px ; ">
         {% csrf_token %}
-        <fieldset class="form-group" >
-            <!-- <legend class="border-bottom mb-4">Add a Task</legend> -->
-            {{ form }}
-        </fieldset>
+        <!-- <fieldset class="form-group" >
+           <legend class="border-bottom mb-4">Add a Task</legend> -->
+            <!-- {{ form }} -->
+        <!--</fieldset> -->
         <div class="form-group" style="margin-top: 50px;display: block;">
             <h3>This action cannot be undone. Be sure before you validate the information.</h3>
-            <button class="btn btn-outline-info" type="submit">Validate</button>
+            <button class="btn btn-outline-info" style='    font-size: 20px;
+          ' type="submit">Validate</button>
 
         </div>
     </form>
