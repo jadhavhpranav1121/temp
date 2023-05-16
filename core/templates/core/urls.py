@@ -3,7 +3,7 @@ from django.urls import path
 from core import views as core_views
 from django.contrib.auth import views as auth_views
 
-
+# its not working for others
 urlpatterns = [
     path("", core_views.Home.as_view(), name="home"),
     path("createconvict/", core_views.CreateConvict.as_view(), name="createconvict"),
@@ -14,9 +14,5 @@ urlpatterns = [
     path("login/", auth_views.LoginView.as_view(template_name="core/login.html"), name="login"),
     path("logout/", auth_views.LogoutView.as_view(template_name="core/logout.html"), name="logout"),
     path("our-team/", core_views.Home.as_view(template_name="team-details.html"), name="ourteam"),
-    path("contact/", core_views.Home.as_view(template_name="contact.html"), name="contact")
-    # path("community/", core_views.Home.as_view(template_name="community.html"), name="community"),
-    # path("faq/", core_views.Home.as_view(template_name="faq.html"), name="faq"),
-    # path("blog/", core_views.Home.as_view(template_name="blog.html"), name="blog"),
-    # path("blogdetail/", core_views.Home.as_view(template_name="blog-details.html"), name="blog-details"),
+    # path("contact/", core_views.Home.as_view(template_name="thankyou.html"), name="contact"),
 ]

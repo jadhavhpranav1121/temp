@@ -21,6 +21,7 @@ from django_flatpickr.widgets import DatePickerInput
 class Home(ListView):
     model = Block
     template_name = "core/home.html"
+    nbar = "home"
 
 
 class CreateConvict(LoginRequiredMixin, CreateView):

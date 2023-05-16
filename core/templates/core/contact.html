@@ -1,6 +1,10 @@
 {% extends "core/index.html" %}
 {% block content %}
-
+<style>
+  #contactform input{
+    margin-bottom:20px;
+  }
+</style>
 <section class="page-title d-flex justify-content-center align-items-center"
   style='padding-top:108px;height: 400px;z-index: 100;'>
   <div class="container">
@@ -24,15 +28,16 @@
           </div>
           <p class="m-r-40">Fill up the Form and our team will get back to within 24 hrs</p>
         </div>
-        <form action="https://formsubmit.co/jadhavhpranav1121@email.com" method="POST" class="form-contact"
+        <form class="form-contact" method="POST" accept-charset="UTF-8"
           id="contactform" data-aos="fade-right" data-aos-duration="800">
-
+          {% csrf_token %}
           <input type="text" name="name" id="name" placeholder="Name" required>
           <input type="email" name="email" id="mail" placeholder="Email Address" required>
           <input type="number" name="phone" id="phone" placeholder="Phone" required>
           <textarea placeholder="Type your Messege" rows="5" tabindex="4" name="message" class="message"
             id="message"></textarea>
           <input type="hidden" name="_next" value="thankyou.html">
+          <input type="hidden" name="_gotcha" style="display:none !important">
           <button class="tf-button btn-effect" type="submit"><span class="boder-fade"></span><span class="effect">Send
               Message</span></button>
         </form>
@@ -67,5 +72,27 @@
     </div>
   </div>
 </section>
+<script>
+   const form = document.getElementById("contactform");
+    form.addEventListener("submit", formSubmit);
 
+    function formSubmit(e) {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+
+        fetch("https://getform.io/f/286e20bc-fa9d-4393-b1c4-b6987652086e", {
+            method: "POST",
+            body: formData,
+            headers: {
+                "Accept": "application/json",
+            },
+        })
+        .then(response =>{
+          if(response.status==200){
+            window.location = "http://localhost:8000/thankyou/";
+          }
+        })
+        .catch(error => console.log(error))
+    }
+</script>
 {% endblock content %}

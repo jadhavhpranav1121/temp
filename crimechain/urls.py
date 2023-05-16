@@ -23,6 +23,7 @@ urlpatterns = [
     path("logout/", auth_views.LogoutView.as_view(template_name="core/logout.html"), name="logout"),
     path("our-team/", core_views.Home.as_view(template_name="core/team-details.html"), name="ourteam"),
     path("community/", core_views.Home.as_view(template_name="core/community.html"), name="community"),
+    path("thankyou/", core_views.Home.as_view(template_name="core/thankyou.html"), name="thankyou"),
     # path("faq/", core_views.Home.as_view(template_name="core/faq.html"), name="faq"),
     # path("blog/", core_views.Home.as_view(template_name="core/blog.html"), name="blog"),
     # path("blogdetail/", core_views.Home.as_view(template_name="core/blog-details.html"), name="blog-details"),

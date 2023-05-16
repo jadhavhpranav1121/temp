@@ -121,6 +121,7 @@ h6,
   height: 100%;
   overflow: hidden;
   position: relative;
+  padding-bottom: 60px;
 }
 
 .row {
@@ -2843,7 +2844,7 @@ input[type="color"]::placeholder {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
+  width: 115%;
 }
 
 .header #site-header-inner .tf-button {
@@ -2852,7 +2853,7 @@ input[type="color"]::placeholder {
 
 .header .main-nav {
   position: absolute;
-  left: 20%;
+  left: 464px;
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -3202,7 +3203,7 @@ input[type="color"]::placeholder {
 
 @media only screen and (max-width: 1440px) {
   .header .main-nav {
-    left: 20%;
+    left: 464px;
   }
 
   .item-details .list-product .box {
@@ -4162,6 +4163,7 @@ input[type="color"]::placeholder {
   .main.home3 .page-title .box-slider .content-box h2 {
     font-size: 50px;
   }
+
 
   #footer .footer-main #subscribe-form {
     display: block;
