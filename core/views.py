@@ -13,9 +13,15 @@ from django.db.models import Q
 from rest_framework.decorators import api_view
 import json
 from django.core.files import File
-from datetime import date
+from datetime import date, datetime
 from django import forms
 from django_flatpickr.widgets import DatePickerInput
+from joblib import load
+import pickle
+import sklearn
+from django.db.models import Sum
+from datetime import date
+from django.utils import timezone
 
 
 class Home(ListView):
@@ -213,11 +219,68 @@ class ConvictDetailView(LoginRequiredMixin, DetailView):
     # template_name='core/convictdetailview.html'
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+<<<<<<< Updated upstream
         context["validate_url"] = reverse_lazy("convictvalidate_create", kwargs={"pk": self.object.pk})
         context["total_validates"] = ConvictValidate.objects.filter(convict=self.object)
         context["validated_by_curr_user"] = len(
             ConvictValidate.objects.filter(user=self.request.user, convict=self.object)
         )
+=======
+        context['crimes'] = Block.objects.filter(perp=self.object) 
+        context['validate_url'] = reverse_lazy('convictvalidate_create', kwargs={'pk': self.object.pk})
+        context['total_validates'] = ConvictValidate.objects.filter(convict=self.object)
+        context['validated_by_curr_user'] = len(ConvictValidate.objects.filter(user=self.request.user,convict=self.object))
+        
+        
+        #print(self.object.__dict__)
+        attr_dict=self.object.__dict__
+
+        encoder_dict={
+                        'Female': 0,
+                        'Male': 1,
+                        'graduate': 0,
+                        'illiterate': 1,
+                        'post graduate': 2,
+                        'school': 3,
+                        'school dropout': 4,
+                        'Rural': 0,
+                        'Urban': 1,
+                        'No': 0,
+                        'Unknown': 1,
+                        'Yes': 2,
+                        'Below poverty': 0,
+                        'lower class': 1,
+                        'middle': 2,
+                        'upper': 3,
+                        'Other':3,
+                        '':3
+                        }             #Refers to label encoder in ipynb file
+
+        prediction_attrs=[
+                            encoder_dict[attr_dict['gender']],
+                            int((timezone.now().date()-attr_dict['date_of_birth']).days/365),
+                            encoder_dict[attr_dict['family_record']],
+                            encoder_dict[attr_dict['financial_background']],
+                            encoder_dict[attr_dict['education']],
+                            encoder_dict[attr_dict['place_of_birth_type']],
+                            len(Block.objects.filter(perp=self.object, crime_type='Violent')),
+                            len(Block.objects.filter(perp=self.object, crime_type='Non-Violent'))
+                         ]  #list of paramters for model to make prediction
+        
+        #print(prediction_attrs)
+        ml_model=load('ML/model.joblib')  #loads model from ML folder
+        
+        try:
+            prediction=ml_model.predict([prediction_attrs])
+            #print('predicted')
+            print(prediction[0])
+            context['prediction']=prediction[0]          #Very likely, neutral or less likely
+        except Exception as e:
+            print(str(e))
+            context['prediction']="Some error occured"
+
+        
+>>>>>>> Stashed changes
         return context
 
 

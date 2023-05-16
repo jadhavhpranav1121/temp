@@ -1,0 +1,102 @@
+criminal_id,Gender,Age,Family_record,Fin_status,Education,Population,Likelihood,violent,non_violent
+1,Male,57,Unknown,Middle Class,Post Graduate,Urban,Less Likely,0,2
+2,Male,24,Yes,Lower Class,School,Urban,Very Likely,2,1
+3,Male,25,Yes,Middle Class,Graduate,Urban,Very Likely,2,3
+4,Male,31,No,Below Poverty,School dropout,Rural,Neutral,1,2
+5,Male,47,No,Middle Class,Graduate,Urban,Neutral,0,3
+6,Male,68,No,Middle Class,School,Urban,Less Likely,0,1
+7,Male,34,No,Lower Class,School,Rural,Less Likely,0,2
+8,Male,36,No,Lower Class,School,Rural,Very Likely,2,4
+9,Male,29,No,Middle Class,Graduate,Urban,Neutral,1,3
+10,Male,55,No,Middle Class,Post Graduate,Urban,Less Likely,0,2
+11,Male,34,No,Middle Class,Post Graduate,Urban,Less Likely,0,1
+12,Male,30,No,Upper Class,School,Rural,Very Likely,3,1
+13,Male,27,No,Below Poverty,School dropout,Rural,Very Likely,3,2
+14,Male,44,Unknown,Below Poverty,School dropout,Rural,Less Likely,0,2
+15,Male,24,Yes,Below Poverty,School dropout,Rural,Very Likely,3,1
+16,Male,38,Unknown,Middle Class,Graduate,Urban,Neutral,2,2
+17,Male,23,Unknown,Lower Class,School dropout,Rural,Neutral,0,3
+18,Male,31,Unknown,Middle Class,School dropout,Urban,Less Likely,0,2
+19,Male,19,Unknown,Middle Class,School dropout,Rural,Less Likely,1,1
+20,Male,56,No,Lower Class,School,Rural,Less Likely,0,1
+21,Male,35,No,Upper Class,Post Graduate,Urban,Less Likely,1,1
+22,Male,43,No,Below Poverty,School dropout,Rural,Neutral,1,2
+23,Male,26,No,Lower Class,School dropout,Urban,Less Likely,1,0
+24,Male,35,No,Middle Class,Graduate,Urban,Less Likely,0,1
+25,Male,18,No,Below Poverty,School dropout,Rural,Less Likely,0,1
+26,Male,36,No,Lower Class,School dropout,Rural,Neutral,1,2
+27,Male,67,No,Middle Class,Graduate,Urban,Less Likely,1,1
+28,Male,34,No,Middle Class,School,Rural,Less Likely,1,0
+29,Male,28,No,Upper Class,Graduate,Urban,Less Likely,0,2
+30,Male,33,No,Below Poverty,School dropout,Rural,Less Likely,0,1
+31,Male,46,Yes,Below Poverty,School dropout,Rural,Neutral,2,1
+32,Male,37,Unknown,Below Poverty,School dropout,Urban,Less Likely,1,0
+33,Male,26,Unknown,Middle Class,Graduate,Urban,Less Likely,0,2
+34,Male,47,Unknown,Upper Class,Post Graduate,Urban,Less Likely,0,1
+35,Male,21,No,Lower Class,School dropout,Urban,Less Likely,1,0
+36,Male,35,No,Below Poverty,School dropout,Urban,Very Likely,2,1
+37,Male,24,No,Lower Class,School,Rural,Less Likely,0,1
+38,Male,38,No,Below Poverty,School dropout,Rural,Less Likely,1,0
+39,Male,29,Yes,Middle Class,Graduate,Urban,Very Likely,3,0
+40,Male,25,No,Lower Class,School ,Rural,Less Likely,0,2
+41,Male,23,Unknown,Lower Class,School ,Rural,Less Likely,1,0
+42,Male,20,No,Lower Class,Graduate,Rural,Less Likely,0,1
+43,Male,32,No,Below Poverty,School dropout,Rural,Neutral,2,1
+44,Male,33,No,Lower Class,School,Rural,Less Likely,0,1
+45,Male,25,Yes,Below Poverty,Illiterate,Rural,Very Likely,2,3
+46,Female,22,Unknown,Below Poverty,School dropout,Rural,Less Likely,1,0
+47,Male,25,Unknown,Below Poverty,School dropout,Rural,Less Likely,1,0
+48,Male,32,Unknown,Middle Class,School ,Urban,Less Likely,1,0
+49,Male,19,Unknown,Lower Class,School dropout,Rural,Less Likely,0,2
+50,Male,27,No,Lower Class,School,Rural,Very Likely,2,2
+51,Male,31,No,Upper Class,Graduate,Urban,Less Likely,0,2
+52,Male,52,No,Lower Class,School,Rural,Neutral,0,3
+53,Male,33,No,Below Poverty,School dropout,Rural,Neutral,1,2
+54,Female,21,No,Below Poverty,School dropout,Rural,Less Likely,1,0
+55,Male,47,No,Lower Class,School,Rural,Less Likely,0,1
+56,Male,29,Yes,Lower Class, School ,Urban,Very Likely,2,0
+57,Male,38,No,Below Poverty,School dropout,Rural,Less Likely,1,0
+58,Male,51,No,Below Poverty,School dropout,Rural,Less Likely,0,2
+59,Male,17,No,Lower Class,School dropout,Urban,Less Likely,0,1
+60,Male,23,No,Below Poverty,School dropout,Rural,Less Likely,0,1
+61,Female,35,No,Lower Class,School,Rural,Less Likely,0,1
+62,Male,37,No,Upper Class,Post Graduate,Urban,Less Likely,1,0
+63,Male,25,Unknown,Below Poverty,School dropout,Rural,Neutral,1,2
+64,Male,39,No,Middle Class,Graduate,Urban,Less Likely,0,2
+65,Male,22,No,Below Poverty,School dropout,Urban,Less Likely,1,0
+66,Male,43,No,Lower Class,School ,Rural,Less Likely,1,1
+67,Male,30,No,Lower Class,School,Urban,Less Likely,1,0
+68,Female,25,No,Lower Class,School,Urban,Less Likely,1,0
+69,Male,29,No,Below Poverty,School dropout,Rural,Less Likely,1,0
+70,Male,21,No,Below Poverty,School dropout,Urban,Neutral,1,2
+71,Male,28,No,Below Poverty,School dropout,Urban,Very Likely,2,1
+72,Male,34,Unknown,Lower Class,School,Rural,Less Likely,0,2
+73,Male,23,Unknown,Below Poverty,School dropout,Urban,Less Likely,0,1
+74,Male,19,Unknown,Below Poverty,School dropout,Urban,Less Likely,1,0
+75,Male,43,No,Lower Class,School,Rural,Very Likely,2,2
+76,Female,37,No,Lower Class,School,Urban,Less Likely,1,0
+77,Male,56,No,Lower Class,School,Urban,Less Likely,0,1
+78,Male,32,No,Below Poverty,School dropout,Rural,Neutral,1,2
+79,Male,24,No,Middle Class,Graduate,Urban,Less Likely,0,2
+80,Male,68,No,Lower Class,School,Rural,Less Likely,0,1
+81,Male,39,No,Below Poverty,School dropout,Urban,Neutral,1,2
+82,Male,23,No,Below Poverty,School,Urban,Very Likely,2,1
+83,Male,20,No,Below Poverty,School dropout,Urban,Less Likely,0,1
+84,Male,27,No,Lower Class,School,Rural,Less Likely,0,1
+85,Male,30,Yes,Below Poverty,Illiterate,Rural,Less Likely,1,0
+86,Male,41,No,Middle Class,Graduate,Urban,Less Likely,0,1
+87,Male,26,Yes,Lower Class,School dropout,Rural,Very Likely,3,0
+88,Male,35,No,Upper Class,Graduate,Urban,Less Likely,1,0
+89,Male,22,No,Below Poverty,School dropout,Rural,Less Likely,0,2
+90,Male,39,No,Below Poverty,School ,Rural,Neutral,1,1
+91,Male,45,No,Below Poverty,School dropout,Rural,Less Likely,0,2
+92,Male,27,Unknown,Lower Class, School ,Urban,Less Likely,0,2
+93,Male,31,No,Lower Class,School,Urban,Very Likely,2,2
+94,Male,33,No,Lower Class,School dropout,Rural,Less Likely,0,1
+95,Male,29,Yes,Lower Class,School,Urban,Very Likely,3,0
+96,Female,21,No,Below Poverty,School dropout,Rural,Less Likely,0,1
+97,Female,44,No,Middle Class,Graduate,Urban,Less Likely,0,1
+98,Male,37,Unknown,Middle Class,Graduate,Rural,Less Likely,0,2
+99,Male,41,No,Upper Class,Post Graduate,Urban,Less Likely,0,2
+100,Male,19,No,Below Poverty,School dropout,Rural,Less Likely,1,0
+101,Male,22,No,Below Poverty,Illiterate,Rural,Less Likely,1,0
