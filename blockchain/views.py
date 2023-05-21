@@ -30,8 +30,9 @@ class Blockchain:
     def __init__(self):
         file = open("media/main.json", "r")
         chain1 = json.loads(file.read())
-        #print("blockchain -->", chain1)
+        # print("blockchain -->", chain1)
         self.chain = chain1["chain"]
+        self.data = []
         if chain1:
             self.chain = chain1["chain"]
         else:
@@ -103,6 +104,7 @@ class Blockchain:
     def add_transaction(self, criminal_id, name, gender, dob, fin_status, education, population, family_record, crime):
         values = ()
         flag = False
+
         for i in range(int(1), int(len(blockchain.chain))):
             d = blockchain.chain[i]["data"]
             e = blockchain.chain[i]
@@ -126,10 +128,12 @@ class Blockchain:
                     "time": str(datetime.datetime.now()),
                 }
             )
+            print(self.data)
 
         previous_block = self.get_last_block()
         if flag == False:
             return (previous_block["index"] + 1, {})
+
         return values
 
     def add_node(self, address):
@@ -174,7 +178,6 @@ def mine_block(request):
             fin_status=received_json["fin_status"],
             education=received_json["education"],
             population=received_json["population"],
-            # likelihood=received_json["likelihood"],
             family_record=received_json["family_record"],
             crime=received_json["crime"],
         )

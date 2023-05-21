@@ -1,2 +1,3 @@
 criminal_id,name,gender,age,fin_status,education,population,family_record,crime
+5,pranav,male,1,urban,graduate,yo,family_record,2
 4,we,Male,22,lower class,school dropout,Urban,Yes,2
