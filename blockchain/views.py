@@ -56,6 +56,7 @@ class Blockchain:
     def create_block1(self, nonce, previous_hash, data, crime):
         dat = copy.deepcopy(data)
         dat[0]["crime_list"]["details"].append(crime)
+        print(dat[0]["crime_list"]["details"])
         block = {
             "index": len(self.chain) + 1,
             "timestamp": str(datetime.datetime.now()),
@@ -63,8 +64,10 @@ class Blockchain:
             "previous_hash": previous_hash,
             "data": dat,
         }
+        # print(dat)
         # block['data'][0]['crime_list'].append(scale)
         self.chain.append(block)
+        # print(block)
         return block
 
     def get_last_block(self):
@@ -181,7 +184,7 @@ def mine_block(request):
             family_record=received_json["family_record"],
             crime=received_json["crime"],
         )
-        print(a)
+
         previous_block = blockchain.get_last_block()
         previous_nonce = previous_block["nonce"]
         nonce = blockchain.proof_of_work(previous_nonce)

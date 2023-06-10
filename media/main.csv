@@ -1,3 +1,5 @@
 criminal_id,name,gender,age,fin_status,education,population,family_record,crime
-5,pranav,male,1,urban,graduate,yo,family_record,2
-4,we,Male,22,lower class,school dropout,Urban,Yes,2
+5,Pranav Hari Jadhav,Male,22,middle,graduate,Rural,No,2
+6,f,Male,63,lower class,school,Urban,Yes,2
+1,a,Male,22,middle,school,Rural,Yes,2
+8,g,Male,63,upper,Illiterate,Urban,Yes,1
